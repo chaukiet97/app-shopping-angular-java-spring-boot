@@ -5,15 +5,15 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Component, OnInit, Inject } from '@angular/core';
 
 @Component({
-  selector: 'app-dialog-delete',
-  templateUrl: './dialog-delete.component.html',
-  styleUrls: ['./dialog-delete.component.css']
+  selector: 'app-dialog-delete-page',
+  templateUrl: './dialog-delete-page.component.html',
+  styleUrls: ['./dialog-delete-page.component.css']
 })
-export class DialogDeleteComponent implements OnInit {
-  formDeleteGroup: FormGroup;
+export class DialogDeletePageComponent implements OnInit {
+  formDeletepage: FormGroup;
   constructor(
     private formBuilder: FormBuilder,
-    public dialogRef: MatDialogRef<DialogDeleteComponent>,
+    public dialogRef: MatDialogRef<DialogDeletePageComponent>,
     // public dialog: NgDialogAnimationService,
     @Inject(MAT_DIALOG_DATA) public item: any,
     private pagesService: PagesService,
@@ -21,15 +21,15 @@ export class DialogDeleteComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.formDeleteGroup = this.formBuilder.group({
+    this.formDeletepage = this.formBuilder.group({
       value: ["", Validators.required]
     });
   }
   onDelete(){
-    if (this.formDeleteGroup.value.value ==this.item.data.name) {
-      this.pagesService.deletePageGroup(this.item.data.id).subscribe(res=>{
+    if (this.formDeletepage.value.value ==this.item.data.name) {
+      this.pagesService.deletePage(this.item.data.id).subscribe(res=>{
         if (res.error ==200) {
-          this.snackBar.open(`Xóa ${this.formDeleteGroup.value.value} thành công `, "Đóng", {
+          this.snackBar.open(`Xóa ${this.formDeletepage.value.value} thành công `, "Đóng", {
             duration: 2000,
 
           });
@@ -41,7 +41,7 @@ export class DialogDeleteComponent implements OnInit {
         }
       })
     } else {
-      this.snackBar.open(`Giá trị ${this.formDeleteGroup.value.value} không chính xác `, "Đóng", {
+      this.snackBar.open(`Giá trị ${this.formDeletepage.value.value} không chính xác `, "Đóng", {
         duration: 2000,
       });
     }

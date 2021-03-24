@@ -1,3 +1,4 @@
+import { DialogDeletePageComponent } from './../shared/component/config/dialog-delete-page/dialog-delete-page.component';
 import { DialogDeleteComponent } from './../shared/component/config/dialog-delete/dialog-delete.component';
 import { PagesService } from './../../shared/core/service/pages.service';
 import { MatSort } from '@angular/material/sort';
@@ -84,9 +85,18 @@ export class PagesComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       this.getPageGroup();
-      this.getAllPage();
     });
 
+  }
+  onDeletePage(data){
+    const dialogRef = this.dialog.open(DialogDeletePageComponent, {
+      width: '400px',
+      data: { data }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.getAllPage();
+    });
   }
 
 }

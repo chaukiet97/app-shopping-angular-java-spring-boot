@@ -15,6 +15,7 @@ import { InsGroupProductComponent } from './shared/component/products/ins-group-
 import { InsPagesComponent } from './shared/component/pages/ins-pages/ins-pages.component';
 import { CKEditorModule } from 'ckeditor4-angular';
 import { DialogDeleteComponent } from './shared/component/config/dialog-delete/dialog-delete.component';
+import { DialogDeletePageComponent } from './shared/component/config/dialog-delete-page/dialog-delete-page.component';
 
 
 
@@ -31,6 +32,7 @@ import { DialogDeleteComponent } from './shared/component/config/dialog-delete/d
     InsGroupProductComponent,
     InsPagesComponent,
     DialogDeleteComponent,
+    DialogDeletePageComponent,
   ],
   imports: [
     CommonModule,
@@ -44,7 +46,8 @@ import { DialogDeleteComponent } from './shared/component/config/dialog-delete/d
     InsGroupPagesComponent,
     InsGroupProductComponent,
     InsPagesComponent,
-    DialogDeleteComponent
+    DialogDeleteComponent,
+    DialogDeletePageComponent,
   ],
 })
 export class BackendModule { }

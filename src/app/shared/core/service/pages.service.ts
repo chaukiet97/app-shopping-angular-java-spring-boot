@@ -47,4 +47,7 @@ export class PagesService {
   updatePage(data, id): Observable<PageResonse> {
     return this.http.post<PageResonse>(environment.api_host + `/page/updatePage/${id}`, data);
   }
+  deletePage(id): Observable<PageResonse> {
+    return this.http.delete<PageResonse>(environment.api_host + `/page/deletePage/${id}`)
+  }
 }
