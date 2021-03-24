@@ -1,0 +1,13 @@
+.product-group ::ng-deep mat-table{
+  width: 100%;
+  border-top: 1px solid #dddddd;
+  border-right: 1px solid #dddddd;
+  border-left: 1px solid #dddddd;
+  margin-bottom: 8px;
+}
+.product-group::ng-deep .mat-cell:last-of-type,
+.product-group::ng-deep .mat-header-cell:last-of-type{
+  padding-right: 8px !important;
+  display: flex;
+  justify-content: flex-end;
+}

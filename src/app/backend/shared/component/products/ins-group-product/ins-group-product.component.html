@@ -1,0 +1,18 @@
+<div class="product-group">
+  <h2 mat-dialog-title>{{this.item.data.id ?"Sửa Nhóm Sản Phẩm  ":"Thêm Nhóm Sản Phẩm"}}</h2>
+  <form [formGroup]="formProductsGroup" *ngIf="formProductsGroup">
+    <mat-form-field appearance="outline" class="w-100">
+      <mat-label>Tên nhóm Sản Phẩm</mat-label>
+      <input matInput autocomplete="off" formControlName="name" required>
+    </mat-form-field>
+  </form>
+  <div class="dialog-bottom">
+    <div class="btn-cancel">
+      <button mat-stroked-button type="button" mat-dialog-close>HỦY</button>
+    </div>
+    <div class="btn-save">
+      <button mat-button type="button" keyboard-save [disabled]="formProductsGroup.invalid"
+        (click)="onIns()">Thêm</button>
+    </div>
+  </div>
+</div>

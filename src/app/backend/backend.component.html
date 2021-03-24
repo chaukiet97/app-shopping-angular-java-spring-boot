@@ -1,0 +1,38 @@
+<div class="main-container background-color-none">
+  <div class="app-container">
+    <mat-sidenav-container class="sidenav-container">
+      <mat-sidenav [ngClass]="'background-color-brand'" #drawer class="sidenav" [mode]="optionSideNav.mode"
+        [opened]="optionSideNav.isOpened" [fixedInViewport]="optionSideNav.isFixed">
+        <div color="primary" class="logo">
+          <img src="../../assets/logo/logo.png" style="height: 48px; width: 60px; margin: 0 auto;" alt="logo casso.vn">
+        </div>
+        <mat-nav-list [ngClass]="'background-color-brand'" class="sidenav-content">
+          <a mat-list-item *ngFor="let routeLink of routeLinks" [routerLink]="routeLink.link" [routerLinkActive]="['']"
+            [ngClass]="rla.isActive?'active':''" #rla="routerLinkActive"
+            [matTooltip]="isExpandedSideNav?'':routeLink.label" matTooltipPosition="right">
+            <mat-icon matListIcon>{{routeLink.icon}}</mat-icon>
+            <span *ngIf="isExpandedSideNav">{{routeLink.label}}</span>
+          </a>
+        </mat-nav-list>
+      </mat-sidenav>
+      <mat-sidenav-content>
+        <div class="mat-app-background basic-container" #appContainer
+          [ngStyle]="{'margin-left': isExpandedSideNav? '140px' : '10px'}">
+          <div class="header-admin">
+            <div class="menu-admin" [ngStyle]="{'margin-left': isExpandedSideNav? '200px' : '73px'}">
+              <button mat-icon-button (click)="expandSideNavAndFitWidth()">
+                <mat-icon>menu</mat-icon>
+              </button>
+            </div>
+          </div>
+          <div class="main">
+            <router-outlet></router-outlet>
+          </div>
+
+        </div>
+      </mat-sidenav-content>
+
+    </mat-sidenav-container>
+  </div>
+</div>
+<!--  [ngStyle]="{'width': isExpandedSideNav && !isSizeMobile? widthAppContainer+'px' : 'auto'}" -->

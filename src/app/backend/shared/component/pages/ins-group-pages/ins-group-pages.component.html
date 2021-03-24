@@ -1,0 +1,17 @@
+<div class="ref-code">
+  <h2 mat-dialog-title>{{this.item.id!=0 ?"Sửa Nhóm Trang ":"Thêm Nhóm Trang"}}</h2>
+  <form [formGroup]="formPagesGroup" *ngIf="formPagesGroup">
+    <mat-form-field appearance="outline" class="w-100">
+      <mat-label>Tên nhóm trang</mat-label>
+      <input matInput autocomplete="off" formControlName="name" required>
+    </mat-form-field>
+  </form>
+  <div class="dialog-bottom">
+    <div class="btn-cancel">
+      <button mat-stroked-button type="button" mat-dialog-close>HỦY</button>
+    </div>
+    <div class="btn-save">
+      <button mat-button type="button" keyboard-save (click)="onIns()">{{this.item.id!=0 ?"Cập nhật ":"Thêm"}}</button>
+    </div>
+  </div>
+</div>

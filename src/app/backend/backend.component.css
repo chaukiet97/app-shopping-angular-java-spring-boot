@@ -1,0 +1,114 @@
+.logo{
+  text-align: center;
+  height: 50px;
+  display: flex;
+  align-items: center;
+}
+.main-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.mat-drawer-container{
+  background-color: transparent;
+}
+
+.basic-container {
+  padding: 0;
+  padding-top: 0 !important;
+  max-width: 920px;
+  margin: 0px 0px 0px 25px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.mat-drawer-content {
+  position: static;
+  min-height: calc(100vh - 48px);
+}
+
+.mat-sidenav-content {
+  padding: 0 2px;
+  min-height: 100vh;
+  /* margin-left: 40px !important; */
+}
+
+.sidenav-content{
+  display: flex;
+  flex-direction: column
+}
+
+.mat-tab-nav-bar .mat-tab-link{
+  min-width: 30px !important;
+}
+.sidenav {
+  box-shadow: 1px 0 8px rgba(0,0,0,0.08);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  top: 48px;
+}
+.business-brand{
+  border: solid 1px white;
+  border-radius: 4px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #333;
+  background-color: white;
+}
+.mat-toolbar-row, .mat-toolbar-single-row {
+  height: 48px !important;
+}
+
+:host ::ng-deep .mat-nav-list .mat-subheader, .mat-nav-list .mat-list-item, .mat-list-icon {
+  color: white !important;
+}
+
+:host ::ng-deep .ag-cell-wrapper {
+  justify-content: inherit;
+}
+
+:host ::ng-deep .mat-button-toggle-appearance-standard .mat-button-toggle-label-content {
+  line-height: 36px;
+}
+
+.sidenav-left-footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 0;
+}
+
+::ng-deep mat-toolbar.logo.mat-toolbar-single-row {
+  padding: 0;
+}
+
+.active {
+  background-color: rgba(0,0,0,.04);
+}
+
+.basic-container{
+  max-width: calc(100vw - 95px);
+  overflow: hidden;
+}
+.basic-container .header-admin{
+  height: 50px;
+  background-color: #333 !important;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+.menu-admin{
+  height: 100%;
+  display: flex;
+  align-items: center
+}
+.menu-admin button mat-icon{
+  color: #ffffff;
+}
+.main{
+  margin-top: 50px;
+}

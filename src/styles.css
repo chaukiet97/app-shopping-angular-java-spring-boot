@@ -1,1 +1,180 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "./col.css";
+* {
+ font-family: Nunito;
+ }
+body, app-root {
+ font-family: Nunito;
+ margin: 0;
+ width: 100%;
+ height: 100%;
+ background-color: #ecf0f5;
+ }
+.cdk-overlay-pane mat-dialog-container {
+ padding: 5px;
+ }
+.inventory-body {
+ min-height: 100vh;
+ }
+
+.mat-dialog-container {
+ border-radius: unset !important;
+ }
+
+.mat-toolbar {
+ background-color: #17754a !important;
+ }
+.mat-app-background {
+ background-color: transparent !important;
+ padding: 10px;
+ }
+.mat-button-toggle-checked {
+ background-color: #333 !important;
+ color: white !important;
+ }
+.mat-tab-nav-bar.mat-primary .mat-ink-bar {
+ background-color: white !important;
+ bottom: auto;
+ height: 3px;
+ }
+
+h4 {
+ font-weight: lighter;
+ font-size: 20px;
+ }
+
+.background-color-brand {
+ background-color: #333 !important;
+ }
+
+.background-image-brand {
+ background-repeat: no-repeat;
+ background-size: cover;
+ min-height: 100vh;
+ background-attachment: fixed;
+ background-position: center;
+ }
+
+.background-color-none {
+ background-color: white !important;
+ background-image: none;
+ }
+
+.msg-error {
+ color: #f44336;
+ font-weight: 400;
+ padding-bottom: 5px;
+ }
+.align-item-center {
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ }
+
+.button-color-brand {
+ color: white !important;
+ background-color: #333 !important;
+ }
+
+.mat-expansion-panel-content {
+ font: unset !important;
+ }
+
+.ag-theme-balham {
+ font-family: unset !important;
+ }
+
+@media only screen and (max-width: 960px) {
+
+ .inventory-body {
+ min-height: calc(100vh - 48px);
+ }
+ }
+
+.bank-right-side-panel {
+ right: 0;
+ position: absolute !important;
+ max-width: 100% !important;
+ top: 0;
+ bottom: 0;
+ width: 800px;
+ }
+.right-side-panel .mat-dialog-container,.bank-right-side-panel .mat-dialog-container {
+ border-radius: 0;
+ padding: 0px 20px !important;
+ }
+
+::-webkit-scrollbar-thumb {
+ /* background-clip: padding-box; */
+ background-color: rgba(0,0,0,.3);
+ border: 5px solid transparent;
+ border-radius: 10px;
+ min-height: 20px;
+ min-width: 20px;
+ height: 5px;
+ width: 5px;
+ }
+
+::-webkit-scrollbar {
+ height: 8px;
+ width: 8px;
+ background: rgba(9,30,66,.08);
+ border-radius: 10px;
+ }
+::-webkit-scrollbar-button {
+ height: 0;
+ width: 0;
+ }
+.affiliate-detail-right-side-panel {
+ right: 0;
+ position: absolute !important;
+ max-width: 100% !important;
+ top: 0;
+ bottom: 0;
+ width: 950px;
+ }
+.card-tables {
+ border-top: 4px solid #333!important;
+ padding: 0!important;
+ margin-bottom: 15px;
+ border-radius: 5px;
+ border-left: 1px solid #eee;
+ border-right: 1px solid #eee;
+ }
+.search-tables {
+ float: right;
+ }
+.search-tables>div {
+ display: flex;
+ align-items: center;
+ }
+.search-tables mat-form-field {
+ margin-bottom: 0;
+ }
+.card-tables mat-card-header {
+ align-items: center;
+ display: flex;
+ padding: 10px 15px!important;
+ }
+.card-tables mat-card-header>div:first-child {
+ display: none;
+ }
+.card-tables mat-card-header>div:nth-child(2) {
+ flex: 1;
+ }
+.card-tables mat-card-content {
+ padding: 0;
+ margin: 0px 0px -1px 0px;
+ }
+.card-tables mat-card-footer {
+ margin: 0;
+ padding: 5px 15px!important;
+ }
+.card-tables [sticky-bottom] {
+ position: sticky;
+ bottom: 0;
+ border-top: 1px solid #eee;
+ background: white;
+ z-index: 4;
+ }
