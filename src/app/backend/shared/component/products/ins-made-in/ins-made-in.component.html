@@ -1,8 +1,8 @@
-<div class="product-group">
-  <h2 mat-dialog-title>{{this.item.id ?"Sửa Nhóm Sản Phẩm  ":"Thêm Nhóm Sản Phẩm"}}</h2>
-  <form [formGroup]="formProductsGroup" *ngIf="formProductsGroup">
+<div class="made-in">
+  <h2 mat-dialog-title>{{this.item.id ?"Sửa Nơi Sản Xuất ":"Thêm Nơi Sản Xuất"}}</h2>
+  <form [formGroup]="formMadeIn" *ngIf="formMadeIn">
     <mat-form-field appearance="outline" class="w-100">
-      <mat-label>Tên nhóm Sản Phẩm</mat-label>
+      <mat-label>Tên Nơi Sản Xuất</mat-label>
       <input matInput autocomplete="off" formControlName="name" required>
     </mat-form-field>
   </form>

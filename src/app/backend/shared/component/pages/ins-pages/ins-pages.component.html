@@ -34,9 +34,11 @@
       </mat-form-field>
     </div>
   </form>
-  <ckeditor [(ngModel)]="mycontent" #myckeditor="ngModel" name="myckeditor" [config]="ckeConfig"
-    (change)="onChange($event)">
-  </ckeditor>
+  <div *ngIf="fromPage.value.type ==2">
+    <ckeditor [(ngModel)]="mycontent" #myckeditor="ngModel" name="myckeditor" [config]="ckeConfig"
+      (change)="onChange($event)">
+    </ckeditor>
+  </div>
 </div>
 
 <div class="dialog-bottom">

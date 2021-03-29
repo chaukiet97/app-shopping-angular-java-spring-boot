@@ -1,6 +1,6 @@
 <div class="w-25">
   <mat-accordion class="example-headers-align">
-    <mat-expansion-panel>
+    <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)">
       <mat-expansion-panel-header>
         <mat-panel-title>
           Danh sách nhóm Sản Phẩm
@@ -9,38 +9,9 @@
           <mat-icon>group_add</mat-icon>
         </mat-panel-description>
       </mat-expansion-panel-header>
-      <div class="product-group">
-        <mat-table [dataSource]="productGroup" matSort>
-          <ng-container matColumnDef="name">
-            <mat-header-cell *matHeaderCellDef mat-sort-header> Tên Nhóm </mat-header-cell>
-            <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
-          </ng-container>
-          <ng-container matColumnDef="action">
-            <mat-header-cell *matHeaderCellDef> Thao tác </mat-header-cell>
-            <mat-cell *matCellDef="let row">
-              <button class="btn-30" (click)="onIns(row)" mat-icon-button matTooltip="Sửa" matTooltipPosition="right">
-                <mat-icon>edit</mat-icon>
-              </button>
-              <button class="btn-30" (click)="onDelete(row.id)" mat-icon-button matTooltip="Xóa"
-                matTooltipPosition="right">
-                <mat-icon>delete</mat-icon>
-              </button>
-            </mat-cell>
-          </ng-container>
-          <mat-header-row *matHeaderRowDef="displayedColumnsProductGroup"></mat-header-row>
-          <mat-row *matRowDef="let row; columns: displayedColumnsProductGroup;"></mat-row>
-        </mat-table>
-        <!-- <mat-paginator [pageSizeOptions]="[5,10]"></mat-paginator> -->
-        <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]">
-        </mat-paginator>
-      </div>
-      <mat-action-row>
-        <button mat-icon-button mat-mini-fab color="accent" (click)="onIns(0)">
-          <mat-icon>add</mat-icon>
-        </button>
-      </mat-action-row>
+      <app-products-group></app-products-group>
     </mat-expansion-panel>
-    <mat-expansion-panel>
+    <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)">
       <mat-expansion-panel-header>
         <mat-panel-title>
           Danh Sách Nơi Sản Xuất
@@ -49,13 +20,9 @@
           <mat-icon>group_add</mat-icon>
         </mat-panel-description>
       </mat-expansion-panel-header>
-      <mat-action-row>
-        <button mat-icon-button mat-mini-fab color="accent">
-          <mat-icon>add</mat-icon>
-        </button>
-      </mat-action-row>
+      <app-products-made-in></app-products-made-in>
     </mat-expansion-panel>
-    <mat-expansion-panel>
+    <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)">
       <mat-expansion-panel-header>
         <mat-panel-title>
           Danh Sách Thương Hiệu
@@ -64,11 +31,7 @@
           <mat-icon>group_add</mat-icon>
         </mat-panel-description>
       </mat-expansion-panel-header>
-      <mat-action-row>
-        <button mat-icon-button mat-mini-fab color="accent">
-          <mat-icon>add</mat-icon>
-        </button>
-      </mat-action-row>
+      <app-products-brand></app-products-brand>
     </mat-expansion-panel>
   </mat-accordion>
 </div>

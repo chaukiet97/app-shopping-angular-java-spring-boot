@@ -1,0 +1,23 @@
+.made-in{
+  padding: 8px 16px;
+}
+.btn-save{
+
+  background: #00A65A;
+}
+.btn-save button{
+  color: #ffffff;
+  font-weight: 600;
+}
+.btn-cancel{
+  margin-right: 15px;
+}
+.btn-cancel button{
+  color: #00A65A;
+  font-weight: 700;
+}
+.dialog-bottom{
+  justify-content: flex-end;
+  display: flex;
+  align-items: center;
+}

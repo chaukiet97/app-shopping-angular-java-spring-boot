@@ -9,6 +9,7 @@
   z-index: 999;
 }
 .dialog-content{
+  padding-top: 16px;
   width: 100%;
   height: calc(100vh - 105px);
   background-color: #ffffff;

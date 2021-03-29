@@ -1,3 +1,4 @@
+import { ProductsService } from 'src/app/shared/core/service/products.service';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { Component, OnInit, Inject } from '@angular/core';
@@ -13,18 +14,23 @@ export class InsGroupProductComponent implements OnInit {
     private formBuilder: FormBuilder,
     public dialogRef: MatDialogRef<InsGroupProductComponent>,
     // public dialog: NgDialogAnimationService,
+    private productsService: ProductsService,
     @Inject(MAT_DIALOG_DATA) public item: any,
   ) { }
 
   ngOnInit(): void {
-    if (this.item.data.id) {
-      this.fromConfig(this.item.data);
+    if (this.item.id != 0) {
+      this.productsService.getProducGrouptById(this.item.id).subscribe(res => {
+        if (res.error == 200) {
+          this.fromConfig(res.data);
+        }
+      })
+    } else {
+      this.fromConfig();
     }
-    else {
-      this.fromConfig(0);
-    }
+
   }
-  fromConfig(item: any) {
+  fromConfig(item: any = {}) {
     let config = {
       id: [item.id || 0],
       name: [item.name, Validators.required]
@@ -33,6 +39,21 @@ export class InsGroupProductComponent implements OnInit {
 
 
   }
-  onIns() { }
+  onIns() {
+    if (this.item.id != 0) {
+      this.productsService.updateProductGroup(this.formProductsGroup.value.name, this.item.id).subscribe(res => {
+        if (res.error == 200) {
+          this.dialogRef.close({});
+
+        }
+      })
+    } else {
+      this.productsService.insertProductGroup(this.formProductsGroup.value).subscribe(res => {
+        if (res.error == 200) {
+          this.dialogRef.close({});
+        }
+      })
+    }
+  }
 
 }
