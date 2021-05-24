@@ -3,7 +3,11 @@
   <form [formGroup]="formPagesGroup" *ngIf="formPagesGroup">
     <mat-form-field appearance="outline" class="w-100">
       <mat-label>Tên nhóm trang</mat-label>
-      <input matInput autocomplete="off" formControlName="name" required>
+      <input matInput autocomplete="off" formControlName="name" (keyup)="onChangeLink($event)" required>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="w-100">
+      <mat-label>Link nhóm trang</mat-label>
+      <input matInput autocomplete="off" formControlName="link" (keyup)="link._keyup($event)" [(ngModel)]="formPagesGroup.value.link" required>
     </mat-form-field>
   </form>
   <div class="dialog-bottom">

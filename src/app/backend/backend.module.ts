@@ -1,3 +1,8 @@
+import { UserService } from './../shared/core/service/user.service';
+import { ProductsService } from './../shared/core/service/products.service';
+import { PagesService } from './../shared/core/service/pages.service';
+import { ImagesService } from './../shared/core/service/images.service';
+import { LinkService } from './../shared/core/service/link.service';
 import { MaterialModule } from './../shared/modules/material/material.module';
 import { BackendRoutingModule } from './backend.routing.module';
 import { NgModule } from '@angular/core';
@@ -21,6 +26,12 @@ import { ProductsGroupComponent } from './shared/component/products/products-gro
 import { ProductsMadeInComponent } from './shared/component/products/products-made-in/products-made-in.component';
 import { ProductsBrandComponent } from './shared/component/products/products-brand/products-brand.component';
 import { InsBrandProductComponent } from './shared/component/products/ins-brand-product/ins-brand-product.component';
+import { InsProductComponent } from './shared/component/products/ins-product/ins-product.component';
+import { CartComponent } from './cart/cart.component';
+import { DialogDeleteProductsComponent } from './shared/component/config/dialog-delete-products/dialog-delete-products.component';
+import { PersonnelComponent } from './personnel/personnel.component';
+import { CustomerComponent } from './customer/customer.component';
+import { SettingsComponent } from './settings/settings.component';
 
 
 
@@ -43,6 +54,12 @@ import { InsBrandProductComponent } from './shared/component/products/ins-brand-
     ProductsMadeInComponent,
     ProductsBrandComponent,
     InsBrandProductComponent,
+    InsProductComponent,
+    CartComponent,
+    DialogDeleteProductsComponent,
+    PersonnelComponent,
+    CustomerComponent,
+    SettingsComponent,
   ],
   imports: [
     CommonModule,
@@ -61,5 +78,13 @@ import { InsBrandProductComponent } from './shared/component/products/ins-brand-
     InsMadeInComponent,
     InsBrandProductComponent,
   ],
+  providers:[
+    LinkService,
+    ImagesService,
+    PagesService,
+    ProductsService,
+    UserService
+  ]
+
 })
 export class BackendModule { }

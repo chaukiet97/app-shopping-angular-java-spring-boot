@@ -1,3 +1,4 @@
+import { LinkService } from './../../../../../shared/core/service/link.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ProductsService } from 'src/app/shared/core/service/products.service';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
@@ -7,7 +8,8 @@ import { Component, OnInit, Inject } from '@angular/core';
 @Component({
   selector: 'app-ins-made-in',
   templateUrl: './ins-made-in.component.html',
-  styleUrls: ['./ins-made-in.component.css']
+  styleUrls: ['./ins-made-in.component.css'],
+  providers:[LinkService]
 })
 export class InsMadeInComponent implements OnInit {
   formMadeIn: FormGroup;
@@ -17,7 +19,8 @@ export class InsMadeInComponent implements OnInit {
     // public dialog: NgDialogAnimationService,
     private productsService: ProductsService,
     @Inject(MAT_DIALOG_DATA) public item: any,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    public link: LinkService,
   ) { }
 
   ngOnInit(): void {
@@ -35,9 +38,14 @@ export class InsMadeInComponent implements OnInit {
   fromConfig(item: any = {}) {
     let config = {
       id: [item.id || 0],
-      name: [item.name, Validators.required]
+      name: [item.name, Validators.required],
+      link:[item.link, Validators.required]
     }
     this.formMadeIn = this.formBuilder.group(config);
+  }
+  onChangeLink(e) {
+    const url = this.link._convent(e.target.value);
+    this.formMadeIn.value.link = url;
   }
   onIns() {
     if (this.item.id != 0) {

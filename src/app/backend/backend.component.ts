@@ -20,9 +20,13 @@ export class BackendComponent implements OnInit {
       { icon: "dashboard", label: "Dashboard", link: "dashboard" },
       { icon: "pages", label: "Quản lý Trang", link: "pages" },
       { icon: "category", label: "Quản lý Sản phẩm", link: "products" },
+      { icon: "shopping_cart", label: "Quản lý Giỏ Hàng", link: "cart" },
       { icon: "note_alt", label: "Quản lý Bài viết", link: "content" },
       { icon: "contact_page", label: "Quản lý Liên hệ", link: "contact" },
-      { icon: "account_circle", label: "Quản lý Nhân viên", link: "users" },
+      { icon: "account_circle", label: "Quản lý Nhân viên", link: "personnel" },
+      { icon: "people_outline", label: "Quản lý Khách hàng", link: "customer" },
+      { icon: "settings", label: "Cài Đặt", link: "settings" },
+
     ];
   }
 

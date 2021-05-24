@@ -18,4 +18,5 @@
 }
 .btn-save button{
   width: 100%;
+  white-space: break-spaces;
 }

@@ -1,3 +1,4 @@
+import { ApiService } from './../shared/core/service/api.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './../shared/modules/material/material.module';
 import { NgModule } from '@angular/core';
@@ -18,6 +19,9 @@ import { FrontendRoutingModule } from './frontend.routing.module';
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
+  ],
+  providers:[
+    ApiService
   ]
 })
 export class FrontendModule { }

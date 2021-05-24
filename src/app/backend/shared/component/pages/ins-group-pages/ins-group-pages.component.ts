@@ -1,3 +1,4 @@
+import { LinkService } from './../../../../../shared/core/service/link.service';
 import { PagesService } from './../../../../../shared/core/service/pages.service';
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -7,7 +8,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-ins-group-pages',
   templateUrl: './ins-group-pages.component.html',
-  styleUrls: ['./ins-group-pages.component.css']
+  styleUrls: ['./ins-group-pages.component.css'],
+  providers:[LinkService]
 })
 export class InsGroupPagesComponent implements OnInit {
   formPagesGroup: FormGroup;
@@ -17,7 +19,8 @@ export class InsGroupPagesComponent implements OnInit {
     // public dialog: NgDialogAnimationService,
     @Inject(MAT_DIALOG_DATA) public item: any,
     private pagesService: PagesService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    public link: LinkService,
   ) { }
 
   ngOnInit(): void {
@@ -36,11 +39,14 @@ export class InsGroupPagesComponent implements OnInit {
   fromConfig(item: any = {}) {
     let config = {
       id: [item.id || 0],
-      name: [item.name, Validators.required]
+      name: [item.name, Validators.required],
+      link:[item.link, Validators.required]
     }
     this.formPagesGroup = this.formBuilder.group(config);
-
-
+  }
+  onChangeLink(e) {
+    const url = this.link._convent(e.target.value);
+    this.formPagesGroup.value.link = url;
   }
   onIns() {
     if (this.item.id != 0) {

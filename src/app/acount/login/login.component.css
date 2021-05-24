@@ -1,0 +1,254 @@
+.bg-login{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: scroll;
+  background: url(../../../assets/orther/overview-bg.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.login-card{
+  color: #fff;
+  padding-left: 20vw;
+  font-weight: lighter;
+  right: 0;
+  left: 0;
+  height: 100vh;
+  max-width: 320px;
+}
+.login-title {
+  padding-top: 80px;
+  font-size: 15px;
+  text-align: center;
+  width: 320px;
+}
+.form-login h1{
+  font-weight: lighter;
+}
+.form-login mat-form-field input{
+  width: 320px !important;
+  color: white;
+}
+.form-login a{
+  line-height: 1.5;
+  color: white;
+  font-style: italic;
+}
+.nav-login{
+  margin-top: 10px;
+}
+:host ::ng-deep .mat-form-field-infix{
+  width: 320px;
+  /* color: white !important; */
+}
+.mat-form-field {
+  width: 320px !important;
+}
+
+
+.login-box {
+  max-width: 350px;
+  margin: 160px auto;
+  font-weight: 500;
+}
+
+.login-box a {
+  text-decoration: none!important;
+}
+
+.login-box mat-card {
+  padding: 30px 20px;
+  overflow: hidden;
+}
+
+.login-box mat-progress-bar {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.title-login-logo{
+  text-align: center;
+  width: 100%;
+}
+img {
+  display: inline;
+  text-align: center;
+  /* width: 100px; */
+}
+
+.title-login {
+  font-weight: 500;
+  font-size: 20px;
+}
+
+.note-login {
+  font-size: 15px;
+}
+
+.subtitle-login {
+  font-size: 13px;
+  color: #3cbbb0;
+}
+
+.card-actions-login>div {
+  display: flex;
+  align-items: center;
+}
+
+.card-actions-login>div>div:first-child {
+  flex: 1;
+  text-align: left;
+}
+
+.list-account-login>div {
+  display: flex;
+  align-items: center;
+}
+
+.list-account-login {
+  background-color: transparent!important;
+  cursor: pointer!important;
+}
+
+.account-login mat-chip-list div.mat-chip-list-wrapper {
+  display: block;
+}
+
+::-webkit-scrollbar-thumb {
+  background-clip: padding-box;
+  background-color: rgba(0, 0, 0, .3);
+  border: 5px solid transparent;
+  border-radius: 10px;
+  min-height: 20px;
+  min-width: 20px;
+  height: 0px;
+  width: 0px;
+}
+
+::-webkit-scrollbar {
+  height: .0001px;
+  width: .0001px;
+  background: 0 0;
+}
+
+::-webkit-scrollbar {
+  height: .0000001px;
+  width: .0000001px;
+  background: 0 0;
+}
+
+::-webkit-scrollbar-button {
+  height: 0;
+  width: 0;
+}
+
+::-webkit-scrollbar-button {
+  height: 0;
+  width: 0;
+  background-color: transparent!important;
+}
+
+.login{
+  width: 320px;
+  background-color: #15ab64 !important;
+}
+#rePassword{
+  float: left;
+}
+#register{
+  float: right;
+}
+.logo{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.brand img {
+  height: 37px;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+.mat-spinner::ng-deep circle {
+  stroke: #fff;
+}
+.mat-spinner::ng-deep {
+  display: inline-block;
+}
+
+/* ----responsive---- */
+@media only screen and (min-width: 1281px) {
+  .login-card{
+      position: fixed;
+  }
+}
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .login-card{
+      position: fixed;
+  }
+}
+
+@media (min-width: 920px) and (max-width: 1024px) {
+  .login-card{
+      position: fixed;
+  }
+}
+@media (min-width: 768px) and (max-width: 919px) {
+
+}
+@media only screen and (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+  .login-card{
+      position: fixed;
+  }
+}
+@media screen and (min-width: 481px) and (max-width: 767px) {
+
+}
+@media screen and (min-width: 411px) and (max-width: 480px) {
+  .login-card{
+      padding: 0 40px !important;
+  }
+}
+@media screen and (min-width: 354px) and (max-width: 410px) {
+  .login-card{
+      padding: 0 20px !important;
+  }
+}
+@media screen and (min-width: 100px) and (max-width: 353px) {
+  .login-card{
+      padding: 0 5px !important;
+  }
+  :host ::ng-deep .mat-form-field-infix{
+      width: 310px;
+      /* color: white !important; */
+  }
+  #mat-input-0{
+      width: 310px !important;
+  }
+  #mat-input-1{
+      width: 310px !important;
+  }
+  button{
+      width: 310px;
+      background-color: #15ab64 !important;
+  }
+  #register{
+      padding-right: 8px !important;
+  }
+}
+.is-acount{
+  margin: 16px 0px;
+  width: 100%;
+  text-align: center;
+}

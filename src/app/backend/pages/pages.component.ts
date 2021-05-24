@@ -77,6 +77,14 @@ export class PagesComponent implements OnInit {
       this.getAllPage();
     });
   }
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSourcePage.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSourcePage.paginator) {
+      this.dataSourcePage.paginator.firstPage();
+    }
+  }
   onDeletePagesGroup(data){
     const dialogRef = this.dialog.open(DialogDeleteComponent, {
       width: '400px',

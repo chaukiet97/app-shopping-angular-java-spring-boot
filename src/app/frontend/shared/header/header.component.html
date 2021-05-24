@@ -1,1 +1,53 @@
-<p>header works!</p>
+<div class="header box-white border-top w-100">
+  <div class="menu fix-menu w-100">
+      <div class="container-main">
+          <div class="container-fuild">
+              <nav class="navbar navbar-expand-lg navbar-light p-0 w-100">
+                  <button class="navbar-toggler m-1 border border-white" style="color: white;position: sticky;
+                  top: 0px;" type="button"
+                      data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
+                      aria-expanded="false" aria-label="Toggle navigation">
+                      <i class="fas fa-bars text-white"></i>
+                      <span>Menu</span>
+                  </button>
+                  <!-- <a *ngIf="width >=1024" style="cursor: pointer;" [routerLink]="['/'+translate['currentLang']]">
+                      <img *ngIf="company && company.logo" [src]="company.logo" class="img-fluid" width="150px">
+                  </a> -->
+                  <div class="collapse navbar-collapse " id="navbarNavDropdown">
+                      <ul class="navbar-nav d-flex justify-content-center  w-100" *ngIf="menu && menu.length > 0">
+                          <ng-template #recursiveMenu let-menu>
+                              <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-item font-weight-bold " *ngFor="let item of menu"
+                                  [attr.data-toggle]="(width < 989)?'collapse':''" [attr.data-target]="(width < 989)?'#navbarNavDropdown':''">
+                                  <a class="nav-link" [routerLink]="[item.link ]">
+                                      {{item.name}}
+                                      <i class="fas fa-angle-down ml-2" *ngIf="(item.data.length > 0)"></i>
+                                  </a>
+                                  <ul class="dropdown-menu w-100 rounded-0 border-0 p-0" style="width: 100px;" *ngIf="item.data && item.data.length > 0">
+                                      <ng-container *ngTemplateOutlet="recursiveMenu; context:{ $implicit: item.data }"></ng-container>
+                                  </ul>
+                              </li>
+                          </ng-template>
+                          <ng-container *ngTemplateOutlet="recursiveMenu; context:{ $implicit: menu }"></ng-container>
+                          <div class="nav-item ml-3 font-weight-bold d-flex align-items-center"
+                              style="padding-top: 15px;padding-bottom: 10px;">
+                              <a class="search float-right" role="button" (click)="isCollapsed =!isCollapsed"
+                                  [attr.aria-expanded]="!isCollapsed" aria-controls="dropdown-search">
+                                  <i class="fas " [ngClass]="(isCollapsed == true )?'fa-search':'fa-times'" style="color:rgb(25 , 41 , 84);cursor: pointer;"></i>
+                              </a>
+                          </div>
+                          <!-- <div class="d-flex">
+                              <div class="searchbutton" id="collapseBasic" [collapse]="isCollapsed" style="width: 360px;">
+                                  <input type="text" (keyup.enter)="searchNews(searchText)" [(ngModel)]="searchText"
+                                      autocomplete="off" class="form-control" placeholder="Tìm Kiếm">
+                                  <span style="cursor: pointer;" (click)="searchNews(searchText)">
+                                      <i class="fas fa-search mt-2 mb-2" style="position: absolute; right: 10px;top: 3px; z-index: 99;"></i>
+                                  </span>
+                              </div>
+                          </div> -->
+                      </ul>
+                  </div>
+              </nav>
+          </div>
+      </div>
+  </div>
+</div>

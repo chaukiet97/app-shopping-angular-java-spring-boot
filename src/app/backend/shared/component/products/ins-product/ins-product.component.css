@@ -1,0 +1,93 @@
+.dialog-header{
+  position: relative;
+  background: #fff;
+  top: 0;
+  left: 0;
+  right: 0;
+  border-bottom: 1px solid #AAAAAA;
+  padding: 10px;
+  z-index: 999;
+}
+.dialog-content{
+  padding-top: 16px;
+  width: 100%;
+  height: calc(100vh - 105px);
+  background-color: #ffffff;
+  overflow: auto;
+}
+.dialog-bottom{
+  position: relative;
+  background: #fff;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-top: 1px solid #C4C4C4;
+  padding: 8px 8px !important;
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+}
+.btn-save{
+
+  background: #00A65A;
+}
+.btn-save button{
+  color: #ffffff;
+  font-weight: 600;
+}
+.btn-cancel{
+  margin-right: 15px;
+}
+.btn-cancel button{
+  color: #00A65A;
+  font-weight: 700;
+}
+.align-item-center{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+:host ::ng-deep .mat-form-field-wrapper{
+  padding-bottom: 8px !important;
+}
+:host ::ng-deep .mat-form-field-appearance-outline .mat-form-field-infix{
+  padding: 16px 0 16px 0;
+  border-top: 0px solid transparent
+}
+:host ::ng-deep .mat-form-field-label-wrapper{
+  top:-6px !important
+}
+.imagesThumb input[type="file"] {
+  display: none;
+}
+.imagesThumb > div {
+  width: 100px;
+  height: 100px;
+  position: relative;
+  border: 1px dashed rgb(220, 222, 227);
+  overflow: hidden;
+  text-align: center;
+  margin: 5px;
+  display: inline-block;
+}
+.imagesThumb > div img {
+  height: 100%;
+}
+.imagesThumb > div span.del {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+.imagesThumb > div span.change,
+.imagesThumb > div span.add {
+  position: absolute;
+  left: calc(50% - 15px);
+  top: calc(50% - 15px);
+  padding: 5px 10px;
+  cursor: pointer;
+}
+/* .change mat-icon,.del mat-icon,.add mat-icon{
+  color: #ffffff !important;
+} */

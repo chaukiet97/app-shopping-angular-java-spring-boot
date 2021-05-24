@@ -1,0 +1,48 @@
+<div class="bg-login">
+  <div class="login-box">
+    <mat-card [formGroup]="loginForm" (keydown.enter)="login()">
+      <mat-progress-bar mode="indeterminate" *ngIf="lock"></mat-progress-bar>
+      <mat-card-title class="text-center title-login-logo">
+        <div>
+          <img src="../../../assets/logo/logo.png" width="100px">
+        </div>
+      </mat-card-title>
+      <mat-card-content>
+        <div *ngIf="isLoginFail" style="color: 	#a5140c; font-weight: 400; margin-bottom: 5px">
+          <span>Mật khẩu hoặc email của bạn nhập sai.<br>Vui lòng nhập lại</span>
+        </div>
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input type="email" formControlName="email" class="form-control" matInput placeholder="Email"
+            autocomplete="email">
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="outline">
+          <!-- <input type="password" formControlName="password" class="form-control" matInput placeholder="Password"
+            autocomplete="current-password"> -->
+          <mat-label>Mật khẩu</mat-label>
+          <input [type]="hide ? 'password' : 'text'" formControlName="password" matInput
+            autocomplete="current-password">
+          <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide">
+            <mat-icon style="color: #555;">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+          </button>
+        </mat-form-field>
+
+      </mat-card-content>
+
+      <mat-card-content class="card-actions-login">
+        <div>
+          <button [disabled]="lock" mat-raised-button color="primary" (click)="login()" type="submit" class="login">
+            <span>Đăng nhập</span>
+            <mat-spinner *ngIf="lock" [diameter]="30"></mat-spinner>
+          </button>
+        </div>
+        <div class="is-acount">
+          Chưa có tài khoản&nbsp;&nbsp;
+          <a href="/acount/register" rel="noopener noreferrer">  Đăng ký</a>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

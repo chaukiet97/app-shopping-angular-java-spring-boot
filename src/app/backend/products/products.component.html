@@ -1,40 +1,107 @@
-<div class="w-25">
-  <mat-accordion class="example-headers-align">
-    <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)">
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          Danh sách nhóm Sản Phẩm
-        </mat-panel-title>
-        <mat-panel-description>
-          <mat-icon>group_add</mat-icon>
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-      <app-products-group></app-products-group>
-    </mat-expansion-panel>
-    <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)">
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          Danh Sách Nơi Sản Xuất
-        </mat-panel-title>
-        <mat-panel-description>
-          <mat-icon>group_add</mat-icon>
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-      <app-products-made-in></app-products-made-in>
-    </mat-expansion-panel>
-    <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)">
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          Danh Sách Thương Hiệu
-        </mat-panel-title>
-        <mat-panel-description>
-          <mat-icon>group_add</mat-icon>
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-      <app-products-brand></app-products-brand>
-    </mat-expansion-panel>
-  </mat-accordion>
-</div>
-<div class="w-75">
-
+<div class="app-product">
+  <div class="w-25">
+    <mat-accordion class="example-headers-align">
+      <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Danh sách nhóm Sản Phẩm
+          </mat-panel-title>
+          <mat-panel-description>
+            <mat-icon>group_add</mat-icon>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <app-products-group></app-products-group>
+      </mat-expansion-panel>
+      <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Danh Sách Nơi Sản Xuất
+          </mat-panel-title>
+          <mat-panel-description>
+            <mat-icon>group_add</mat-icon>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <app-products-made-in></app-products-made-in>
+      </mat-expansion-panel>
+      <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Danh Sách Thương Hiệu
+          </mat-panel-title>
+          <mat-panel-description>
+            <mat-icon>group_add</mat-icon>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <app-products-brand></app-products-brand>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+  <div class="w-75">
+    <div class="mat-card product">
+      <div class="header-product">
+        <div class="title">
+          <h3 class="m-0">Danh Sách Sản Phẩm</h3>
+        </div>
+        <div class="fillter">
+          <mat-form-field class="w-100">
+            <mat-label>Tìm kiếm</mat-label>
+            <input matInput (keyup)="applyFilter($event)" autocomplete="off">
+          </mat-form-field>
+        </div>
+      </div>
+      <mat-table [dataSource]="dataSource" matSort>
+        <ng-container matColumnDef="id">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{row.id}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="name">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Tên </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="images">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Hình ảnh </mat-header-cell>
+          <mat-cell *matCellDef="let row">
+            <img src="../../../assets/products/{{row.images}}" alt="" height="50px" width="50px">
+          </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="count">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Số Lượng </mat-header-cell>
+          <mat-cell *matCellDef="let row">{{row.count}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="price">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Giá gốc </mat-header-cell>
+          <mat-cell *matCellDef="let row">{{row.price | number}} VND</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="price_sale">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Khuyến mãi </mat-header-cell>
+          <mat-cell *matCellDef="let row">{{row.price_sale | number}} VND</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="action">
+          <mat-header-cell *matHeaderCellDef> Thao tác </mat-header-cell>
+          <mat-cell *matCellDef="let row">
+            <div style="text-align: end;">
+              <button class="btn-30" (click)="onInsProduct(row.id)" mat-icon-button matTooltip="Sửa"
+                matTooltipPosition="right">
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button class="btn-30" (click)="onDeleteProduct(row)" mat-icon-button matTooltip="Xóa" matTooltipPosition="right">
+              <mat-icon>delete</mat-icon>
+            </button>
+            </div>
+          </mat-cell>
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+      <mat-paginator [pageSizeOptions]="[10,25,50,100]"></mat-paginator>
+      <div class="fixed-action-btn">
+        <a matTooltip="Thêm Sản Phẩm" (click)="onInsProduct()" matTooltipPosition="above" mat-fab keyboard-create
+          color="warn">
+          <mat-icon>
+            add
+          </mat-icon>
+        </a>
+      </div>
+    </div>
+  </div>
 </div>

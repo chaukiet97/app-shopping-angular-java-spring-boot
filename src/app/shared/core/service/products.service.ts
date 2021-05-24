@@ -1,4 +1,4 @@
-import { MadeInResonse, BrandResonse } from './../model/products';
+import { MadeInResonse, BrandResonse, ProductResonse } from './../model/products';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -63,13 +63,30 @@ export class ProductsService {
     }
     return this.http.post<BrandResonse>(environment.api_host + `/products/updateBrand/${id}`, data);
   }
-  getAllBrand():Observable<BrandResonse>{
+  getAllBrand(): Observable<BrandResonse> {
     return this.http.get<BrandResonse>(environment.api_host + '/products/getBrand');
   }
-  getBrandByID(id):Observable<BrandResonse>{
+  getBrandByID(id): Observable<BrandResonse> {
     return this.http.get<BrandResonse>(environment.api_host + `/products/getBrand/${id}`)
   }
-  deleteBrand(id):Observable<BrandResonse>{
+  deleteBrand(id): Observable<BrandResonse> {
     return this.http.delete<BrandResonse>(environment.api_host + `/products/deleteBrand/${id}`)
+  }
+
+  // add product list
+  inserProduct(data): Observable<ProductResonse> {
+    return this.http.post<ProductResonse>(environment.api_host + `/products/inserProduct`, data);
+  }
+  getAllProduct(): Observable<ProductResonse>{
+    return this.http.get<ProductResonse>(environment.api_host + `/products/getAllProduct`)
+  }
+  getProductById(id:number):Observable<ProductResonse>{
+    return this.http.get<ProductResonse>(environment.api_host + `/products/getProduct/${id}`)
+  }
+  updateProduct(id,data): Observable<ProductResonse>{
+    return this.http.post<ProductResonse>(environment.api_host+`/products/updateProduct/${id}`,data)
+  }
+  deleteProduct(id): Observable<ProductResonse> {
+    return this.http.delete<ProductResonse>(environment.api_host + `/products/deleteProduct/${id}`)
   }
 }

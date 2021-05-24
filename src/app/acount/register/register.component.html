@@ -1,0 +1,72 @@
+<div class="register">
+  <div class="container-main">
+    <div class="info-register">
+      <div class="from-register">
+        <div class="title">Đăng Ký</div>
+        <form [formGroup]="fromRegister" *ngIf="fromRegister">
+          <div class="d-md-flex">
+            <mat-form-field appearance="outline" class="w-50 d-md-flex">
+              <mat-label>Họ</mat-label>
+              <input matInput autocomplete="on" formControlName="firstname" required>
+              <mat-error>{{ getErrorMessage('firstname') }}</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="w-50">
+              <mat-label>Tên</mat-label>
+              <input matInput autocomplete="on" formControlName="lastname" required>
+              <mat-error>{{ getErrorMessage('lastname') }}</mat-error>
+            </mat-form-field>
+          </div>
+          <div class="email">
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>Email</mat-label>
+              <input matInput autocomplete="on" formControlName="email" required>
+              <mat-error>{{ getErrorMessage('email') }}</mat-error>
+            </mat-form-field>
+          </div>
+          <div class="d-md-flex">
+            <mat-form-field appearance="outline" class="w-50 d-md-flex">
+              <mat-label>Số điện thoại</mat-label>
+              <input matInput autocomplete="on" formControlName="phone" required>
+              <mat-error>{{ getErrorMessage('phone') }}</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="w-50">
+              <mat-label>Ngày sinh</mat-label>
+              <input matInput [matDatepicker]="picker" formControlName="brithday" required>
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+              <mat-error>{{ getErrorMessage('brithday') }}</mat-error>
+            </mat-form-field>
+          </div>
+          <div style="padding-bottom: 1.34375em;">
+            <mat-label style="padding-right: 16px;">Giới tính : </mat-label>
+            <mat-radio-group formControlName="sex">
+              <mat-radio-button value="1" style="margin-right: 8px;">Nam</mat-radio-button>
+              <mat-radio-button value="2">Nữ</mat-radio-button>
+            </mat-radio-group>
+          </div>
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Mật Khẩu</mat-label>
+            <input [type]="hide ? 'password' : 'text'" matInput autocomplete="on" formControlName="password_hash"
+              required>
+            <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hide">
+              <mat-icon style="color: #555;">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+            </button>
+            <mat-error>{{ getErrorMessage('password_hash') }}</mat-error>
+          </mat-form-field>
+        </form>
+
+        <div class="card-actions-login">
+          <button [disabled]="fromRegister.invalid" mat-raised-button color="primary" (click)="login()" type="submit" class="login">
+            <span>Tạo tài khoản</span>
+            <mat-spinner *ngIf="lock" [diameter]="30"></mat-spinner>
+          </button>
+        </div>
+        <div class="is-acount">
+          Đã có tài khoản&nbsp;
+          <a href="/acount/login" rel="noopener noreferrer">Đăng nhập</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

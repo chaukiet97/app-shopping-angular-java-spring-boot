@@ -21,7 +21,7 @@ import { CKEditorModule } from 'ckeditor4-angular';
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    CKEditorModule
+    CKEditorModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

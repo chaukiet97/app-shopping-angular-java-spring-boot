@@ -50,4 +50,7 @@ export class PagesService {
   deletePage(id): Observable<PageResonse> {
     return this.http.delete<PageResonse>(environment.api_host + `/page/deletePage/${id}`)
   }
+  getPageByType():Observable<PageResonse>{
+    return this.http.get<PageResonse>(environment.api_host+`/page/pageByType`)
+  }
 }

@@ -3,7 +3,11 @@
   <form [formGroup]="formBrand" *ngIf="formBrand">
     <mat-form-field appearance="outline" class="w-100">
       <mat-label>Tên Thương Hiệu</mat-label>
-      <input matInput autocomplete="off" formControlName="name" required>
+      <input matInput autocomplete="off" formControlName="name" (keyup)="onChangeLink($event)" required>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="w-100">
+      <mat-label>Link Thương Hiệu</mat-label>
+      <input matInput autocomplete="off" formControlName="link" (keyup)="link._keyup($event)" [(ngModel)]="formBrand.value.link" required>
     </mat-form-field>
   </form>
   <div class="dialog-bottom">

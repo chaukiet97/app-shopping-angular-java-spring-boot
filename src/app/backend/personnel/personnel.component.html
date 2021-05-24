@@ -1,0 +1,71 @@
+<div class="app-personnel">
+  <div class="mat-card personnel">
+    <div class="header-personnel">
+      <div class="title">
+        <h3 class="m-0">Danh Sách Nhân viên</h3>
+      </div>
+      <div class="fillter">
+        <mat-form-field class="w-100">
+          <mat-label>Tìm kiếm</mat-label>
+          <input matInput (keyup)="applyFilter($event)" autocomplete="off">
+        </mat-form-field>
+      </div>
+    </div>
+    <mat-table [dataSource]="dataSource" matSort>
+      <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.id}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="email">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Email </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.email}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Họ Tên </mat-header-cell>
+        <mat-cell *matCellDef="let row">{{row.name}}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="phone">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Số Điện Thoại </mat-header-cell>
+        <mat-cell *matCellDef="let row">{{row.phone}}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="sex">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Giới tính </mat-header-cell>
+        <mat-cell *matCellDef="let row">{{row.sex ==1?"Nam":"Nữ"}}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="brithday">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Ngày Sinh </mat-header-cell>
+        <mat-cell *matCellDef="let row">{{row.brithday |date:"dd/MM/yyyy"}}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="action">
+        <mat-header-cell *matHeaderCellDef> Thao tác </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <div style="text-align: end;">
+            <button class="btn-30" (click)="onInspersonnel(row.id)" mat-icon-button matTooltip="Sửa"
+              matTooltipPosition="right">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button class="btn-30" (click)="onDeletepersonnel(row)" mat-icon-button matTooltip="Xóa"
+              matTooltipPosition="right">
+              <mat-icon>delete</mat-icon>
+            </button>
+            <button class="btn-30" (click)="onUpdatePassword(row.id)" mat-icon-button matTooltip="Cập nhật mật Khẩu"
+            matTooltipPosition="right">
+            <mat-icon>vpn_key</mat-icon>
+          </button>
+          </div>
+        </mat-cell>
+      </ng-container>
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+    <mat-paginator [pageSizeOptions]="[10,25,50,100]"></mat-paginator>
+    <div class="fixed-action-btn">
+      <a matTooltip="Thêm Sản Phẩm" (click)="onInspersonnel()" matTooltipPosition="above" mat-fab keyboard-create
+        color="warn">
+        <mat-icon>
+          add
+        </mat-icon>
+      </a>
+    </div>
+  </div>
+</div>

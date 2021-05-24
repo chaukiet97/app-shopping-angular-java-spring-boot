@@ -1,3 +1,9 @@
+.container-main {
+  margin: auto;
+  max-width: 1200px;
+  padding-right: 15px;
+  padding-left: 15px;
+}
 .pull-right {
   float: right
 }
@@ -171,3 +177,4 @@
   width: 18px!important;
   line-height: 18px!important;
 }
+

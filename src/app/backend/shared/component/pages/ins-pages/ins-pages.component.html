@@ -3,11 +3,11 @@
     <div class="align-item-center">
       <mat-form-field appearance="outline" class="w-50">
         <mat-label>Tên Trang</mat-label>
-        <input matInput autocomplete="off" formControlName="name">
+        <input matInput autocomplete="off" formControlName="name" (keyup)="onChangeLink($event)" required>
       </mat-form-field>
       <mat-form-field appearance="outline" class="w-50" style="margin-left: 16px;">
         <mat-label>Link Trang</mat-label>
-        <input matInput autocomplete="off" formControlName="link">
+        <input matInput autocomplete="off" formControlName="link" (keyup)="link._keyup($event)" [(ngModel)]="fromPage.value.link" required>
       </mat-form-field>
     </div>
     <div class="align-item-center">
@@ -33,6 +33,14 @@
         <textarea matInput autocomplete="off" formControlName="description" cdkTextareaAutosize></textarea>
       </mat-form-field>
     </div>
+    <mat-form-field appearance="outline" class="w-100" *ngIf="fromPage.value.type ==3">
+      <mat-label>Trang Cha</mat-label>
+      <mat-select formControlName="parent_id">
+        <mat-option value="0">Chọn loại trang</mat-option>
+        <mat-option [value]="item.id" *ngFor="let item of listTypeProduct">{{item.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
   </form>
   <div *ngIf="fromPage.value.type ==2">
     <ckeditor [(ngModel)]="mycontent" #myckeditor="ngModel" name="myckeditor" [config]="ckeConfig"

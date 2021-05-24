@@ -3,6 +3,7 @@
 }
 .page{
   margin-left: 16px;
+  padding-top: 8px;
 }
 .fixed-action-btn {
   position: fixed;
@@ -11,4 +12,7 @@
   padding-top: 15px;
   margin-bottom: 0;
   z-index: 997;
+}
+.fillter {
+  text-align: end;
 }

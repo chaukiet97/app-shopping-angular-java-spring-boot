@@ -1,0 +1,115 @@
+<div class="dialog-content">
+  <form [formGroup]="fromProduct" *ngIf="fromProduct">
+    <div class="align-item-center">
+      <mat-form-field appearance="outline" class="w-50">
+        <mat-label>Tên Sản Phẩm</mat-label>
+        <input matInput autocomplete="off" formControlName="name" (keyup)="onChangeLink($event)">
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="w-50" style="margin-left: 16px;">
+        <mat-label>Link Sản Phẩm</mat-label>
+        <input matInput autocomplete="off" formControlName="link" (keyup)="link._keyup($event)" [(ngModel)]="fromProduct.value.link">
+      </mat-form-field>
+    </div>
+    <div class="align-item-center">
+      <mat-form-field appearance="outline" class="w-50">
+        <mat-label>Chọn nhóm sản phẩm</mat-label>
+        <mat-select disableRipple formControlName="group_id">
+          <mat-option [value]="item.id" *ngFor="let item of group">{{item.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="w-50" style="margin-left: 16px;">
+        <mat-label>Chọn nơi sản xuất</mat-label>
+        <mat-select disableRipple formControlName="made_in_id">
+          <mat-option [value]="item.id" *ngFor="let item of made_in">{{item.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="align-item-center">
+      <mat-form-field appearance="outline" class="w-50">
+        <mat-label>Chọn thương hiệu</mat-label>
+        <mat-select disableRipple formControlName="brand_id">
+          <mat-option [value]="item.id" *ngFor="let item of brand">{{item.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="w-50" style="margin-left: 16px;">
+        <mat-label>Số lượng sản phẩm</mat-label>
+        <input matInput autocomplete="off" formControlName="count" type="number">
+      </mat-form-field>
+    </div>
+    <div class="align-item-center">
+      <mat-form-field appearance="outline" class="w-50">
+        <mat-label>Giá sản phẩm</mat-label>
+        <input matInput autocomplete="off" formControlName="price">
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="w-50" style="margin-left: 16px;">
+        <mat-label>Giá khuyến mãi</mat-label>
+        <input matInput autocomplete="off" formControlName="price_sale">
+      </mat-form-field>
+    </div>
+    <div class="align-item-center">
+      <div class="w-50">
+        <mat-label>Hình sản phẩm</mat-label>
+        <div class="imagesThumb" *ngIf="images">
+          <div *ngFor="let item of images.data ; let i = index">
+            <img [src]="item.src" *ngIf="item.type==0 || item.type==1" />
+            <span (click)="images._change($event,item)" *ngIf="item.type==0 || item.type==1" class="change">
+              <mat-icon>photo</mat-icon>
+            </span>
+            <span (click)="images._del(i)" *ngIf="item.type==0 || item.type==1" class="del">
+              <mat-icon>clear</mat-icon>
+            </span>
+            <span (click)="images._push($event)" *ngIf="item.type==2" class="add">
+              <mat-icon>add</mat-icon>
+            </span>
+          </div>
+          <input type="file" (change)="images._onchange($event)">
+        </div>
+      </div>
+      <div class="w-50">
+        <mat-label>Hình sản phẩm chi tiết</mat-label>
+        <div class="imagesThumb" *ngIf="list_images">
+          <div *ngFor="let item of list_images.data ; let i = index">
+            <img [src]="item.src" *ngIf="item.type==0 || item.type==1" />
+            <span (click)="list_images._change($event,item)" *ngIf="item.type==0 || item.type==1" class="change">
+              <mat-icon>photo</mat-icon>
+            </span>
+            <span (click)="list_images._del(i)" *ngIf="item.type==0 || item.type==1" class="del">
+              <mat-icon>clear</mat-icon>
+            </span>
+            <span (click)="list_images._push($event)" *ngIf="item.type==2" class="add">
+              <mat-icon>add</mat-icon>
+            </span>
+          </div>
+          <input type="file" (change)="list_images._onchange($event)">
+        </div>
+      </div>
+    </div>
+    <div class="align-item-center">
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Mô tả Sản Phẩm</mat-label>
+        <textarea matInput autocomplete="off" formControlName="description" cdkTextareaAutosize></textarea>
+      </mat-form-field>
+    </div>
+  </form>
+  <div>
+    <ckeditor [(ngModel)]="mycontent" #myckeditor="ngModel" name="myckeditor" [config]="ckeConfig"
+      (change)="onChange($event)">
+    </ckeditor>
+  </div>
+</div>
+
+<div class="dialog-bottom">
+  <div>
+    <mat-slide-toggle [checked]="checkStatus==1?true:false" (change)="onChangeStatus($event)">Trạng thái
+    </mat-slide-toggle>
+  </div>
+  <div class="align-item-center">
+    <div class="btn-cancel">
+      <button mat-stroked-button type="button" mat-dialog-close>Đóng</button>
+    </div>
+    <div class="btn-save">
+      <button mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="onIns()" *ngIf="item.id==0">Thêm</button>
+      <button mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="onUpd()" *ngIf="item.id>0">Cập Nhật</button>
+    </div>
+  </div>
+</div>

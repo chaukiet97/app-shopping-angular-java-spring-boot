@@ -1,3 +1,4 @@
+import { LinkService } from './../../../../../shared/core/service/link.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ProductsService } from 'src/app/shared/core/service/products.service';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
@@ -7,7 +8,8 @@ import { Component, OnInit, Inject } from '@angular/core';
 @Component({
   selector: 'app-ins-brand-product',
   templateUrl: './ins-brand-product.component.html',
-  styleUrls: ['./ins-brand-product.component.css']
+  styleUrls: ['./ins-brand-product.component.css'],
+  providers:[LinkService]
 })
 export class InsBrandProductComponent implements OnInit {
   formBrand: FormGroup;
@@ -17,7 +19,8 @@ export class InsBrandProductComponent implements OnInit {
     // public dialog: NgDialogAnimationService,
     private productsService: ProductsService,
     @Inject(MAT_DIALOG_DATA) public item: any,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    public link: LinkService,
   ) { }
 
   ngOnInit(): void {
@@ -35,9 +38,14 @@ export class InsBrandProductComponent implements OnInit {
   fromConfig(item: any = {}) {
     let config = {
       id: [item.id || 0],
-      name: [item.name, Validators.required]
+      name: [item.name, Validators.required],
+      link:[item.link, Validators.required]
     }
     this.formBrand = this.formBuilder.group(config);
+  }
+  onChangeLink(e) {
+    const url = this.link._convent(e.target.value);
+    this.formBrand.value.link = url;
   }
   onIns() {
     if (this.item.id != 0) {
