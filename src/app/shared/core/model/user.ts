@@ -13,4 +13,5 @@ export class Users {
   phone: string;
   sex: number;
   brithday: Date;
+  avatar:string
 }

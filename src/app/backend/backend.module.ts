@@ -32,6 +32,9 @@ import { DialogDeleteProductsComponent } from './shared/component/config/dialog-
 import { PersonnelComponent } from './personnel/personnel.component';
 import { CustomerComponent } from './customer/customer.component';
 import { SettingsComponent } from './settings/settings.component';
+import { InsPersonnelComponent } from './shared/component/personnel/ins-personnel/ins-personnel.component';
+import { DeletePersonnelComponent } from './shared/component/personnel/delete-personnel/delete-personnel.component';
+import { UpdatePasswordComponent } from './shared/component/personnel/update-password/update-password.component';
 
 
 
@@ -60,6 +63,9 @@ import { SettingsComponent } from './settings/settings.component';
     PersonnelComponent,
     CustomerComponent,
     SettingsComponent,
+    InsPersonnelComponent,
+    DeletePersonnelComponent,
+    UpdatePasswordComponent,
   ],
   imports: [
     CommonModule,
@@ -77,6 +83,9 @@ import { SettingsComponent } from './settings/settings.component';
     DialogDeletePageComponent,
     InsMadeInComponent,
     InsBrandProductComponent,
+    InsPersonnelComponent,
+    DeletePersonnelComponent,
+    UpdatePasswordComponent,
   ],
   providers:[
     LinkService,

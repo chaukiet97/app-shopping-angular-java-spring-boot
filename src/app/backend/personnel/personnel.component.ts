@@ -1,3 +1,6 @@
+import { UpdatePasswordComponent } from './../shared/component/personnel/update-password/update-password.component';
+import { DeletePersonnelComponent } from './../shared/component/personnel/delete-personnel/delete-personnel.component';
+import { InsPersonnelComponent } from './../shared/component/personnel/ins-personnel/ins-personnel.component';
 import { UserService } from './../../shared/core/service/user.service';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSort } from '@angular/material/sort';
@@ -45,28 +48,38 @@ export class PersonnelComponent implements OnInit {
     }
   }
   onInspersonnel(id = 0): void {
-    // const dialogRef = this.dialog.open(InsPagesComponent, {
-    //   width: '800px',
-    //   data: { id: id }
-    // });
+    const dialogRef = this.dialog.open(InsPersonnelComponent, {
+      width: '800px',
+      data: { id: id }
+    });
 
-    // dialogRef.afterClosed().subscribe(result => {
-    //   this.getAllPage();
-    // });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.getAllUser();
+      }
+
+    });
   }
   onDeletepersonnel(data){
-    // const dialogRef = this.dialog.open(DialogDeleteComponent, {
-    //   width: '400px',
-    //   data: { data }
-    // });
+    const dialogRef = this.dialog.open(DeletePersonnelComponent, {
+      width: '400px',
+      data: { data }
+    });
 
-    // dialogRef.afterClosed().subscribe(result => {
-    //   this.getPageGroup();
-    // });
+    dialogRef.afterClosed().subscribe(result => {
+      this.getAllUser();
+    });
 
   }
   onUpdatePassword(id){
+    const dialogRef = this.dialog.open(UpdatePasswordComponent, {
+      width: '400px',
+      data: { id }
+    });
 
+    dialogRef.afterClosed().subscribe(result => {
+      this.getAllUser();
+    });
   }
 
 }

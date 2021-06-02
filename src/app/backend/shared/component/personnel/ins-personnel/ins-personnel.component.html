@@ -1,0 +1,92 @@
+<div class="ins-personnel">
+  <form [formGroup]="fromInsParsonnel" *ngIf="fromInsParsonnel">
+    <div class="header">
+      {{item.id==0?"Thêm Nhân Viên":"Cập nhật nhân viên "+fromInsParsonnel.value['firstname']+'
+      '+fromInsParsonnel.value['lastname']}}
+    </div>
+    <div class="avatar w-100">
+      <mat-label>Hình đại diện</mat-label>
+      <div class="imagesThumb" *ngIf="images">
+        <div *ngFor="let item of images.data ; let i = index">
+          <img [src]="item.src" *ngIf="item.type==0 || item.type==1" />
+          <span (click)="images._change($event,item)" *ngIf="item.type==0 || item.type==1" class="change">
+            <mat-icon>photo</mat-icon>
+          </span>
+          <span (click)="images._del(i)" *ngIf="item.type==0 || item.type==1" class="del">
+            <mat-icon>clear</mat-icon>
+          </span>
+          <span (click)="images._push($event)" *ngIf="item.type==2" class="add">
+            <mat-icon>add</mat-icon>
+          </span>
+        </div>
+        <input type="file" (change)="images._onchange($event)">
+      </div>
+    </div>
+    <div class="align-item-center">
+      <mat-form-field appearance="outline" class="w-50">
+        <mat-label>Họ</mat-label>
+        <input matInput autocomplete="off" formControlName="firstname">
+        <mat-error *ngIf="fromInsParsonnel.get('firstname').hasError('required')">
+          Vui lòng nhập họ nhân viên.
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="w-50" style="margin-left: 16px;">
+        <mat-label>Tên</mat-label>
+        <input matInput autocomplete="off" formControlName="lastname">
+        <mat-error *ngIf="fromInsParsonnel.get('lastname').hasError('required')">
+          Vui lòng nhập tên nhân viên.
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="align-item-center">
+      <mat-form-field appearance="outline" class="w-50">
+        <mat-label>Email</mat-label>
+        <input matInput autocomplete="off" formControlName="email">
+        <mat-error *ngIf="fromInsParsonnel.get('email').hasError('required')">
+          Vui lòng nhập email nhân viên.
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="w-50" style="margin-left: 16px;">
+        <mat-label>Số Điện Thoại</mat-label>
+        <input matInput autocomplete="off" formControlName="phone">
+        <mat-error *ngIf="fromInsParsonnel.get('phone').hasError('required')">
+          Vui lòng nhập số điện thoại nhân viên.
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="align-item-center">
+      <div class="w-50">
+        <mat-form-field appearance="outline">
+          <mat-label>Ngày sinh</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="brithday" required>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="w-50">
+        <mat-label style="padding-right: 16px;">Giới tính : </mat-label>
+        <mat-radio-group formControlName="sex">
+          <mat-radio-button [value]="item.value" *ngFor="let item of sex" style="margin-right: 16px;">{{item.title}}
+          </mat-radio-button>
+        </mat-radio-group>
+      </div>
+    </div>
+    <div class="dialog-bottom">
+      <div>
+        <mat-slide-toggle formControlName="status">Trạng thái
+        </mat-slide-toggle>
+      </div>
+      <div class="align-item-center">
+        <div class="btn-cancel">
+          <button mat-stroked-button type="button" mat-dialog-close>Đóng</button>
+        </div>
+        <div class="btn-save">
+          <button mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="onIns()"
+            *ngIf="item.id==0">Thêm</button>
+          <button mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="onUpd()" *ngIf="item.id>0">Cập
+            Nhật</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

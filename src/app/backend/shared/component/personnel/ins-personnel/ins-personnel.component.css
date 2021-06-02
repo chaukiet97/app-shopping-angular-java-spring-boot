@@ -1,0 +1,74 @@
+.header{
+  padding: 16px 16px;
+  font-weight: 600;
+  border-bottom: 1px solid #ccc;
+}
+.avatar{
+  text-align: center;
+}
+.dialog-bottom{
+  position: relative;
+  background: #fff;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-top: 1px solid #C4C4C4;
+  padding: 8px 8px !important;
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+}
+.btn-save{
+
+  background: #00A65A;
+}
+.btn-save button{
+  color: #ffffff;
+  font-weight: 600;
+}
+.btn-cancel{
+  margin-right: 15px;
+}
+.btn-cancel button{
+  color: #00A65A;
+  font-weight: 700;
+}
+.align-item-center{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.imagesThumb input[type="file"] {
+  display: none;
+}
+.imagesThumb > div {
+  width: 100px;
+  height: 100px;
+  position: relative;
+  border: 1px dashed rgb(220, 222, 227);
+  overflow: hidden;
+  text-align: center;
+  margin: 5px;
+  display: inline-block;
+}
+.imagesThumb > div img {
+  height: 100%;
+}
+.imagesThumb > div span.del {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+.imagesThumb > div span.change,
+.imagesThumb > div span.add {
+  position: absolute;
+  left: calc(50% - 15px);
+  top: calc(50% - 15px);
+  padding: 5px 10px;
+  cursor: pointer;
+}
+/* .change mat-icon,.del mat-icon,.add mat-icon{
+  color: #ffffff !important;
+} */
