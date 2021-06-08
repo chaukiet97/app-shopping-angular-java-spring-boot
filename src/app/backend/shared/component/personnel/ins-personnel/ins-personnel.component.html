@@ -41,7 +41,7 @@
     <div class="align-item-center">
       <mat-form-field appearance="outline" class="w-50">
         <mat-label>Email</mat-label>
-        <input matInput autocomplete="off" formControlName="email">
+        <input matInput autocomplete="off" formControlName="email" >
         <mat-error *ngIf="fromInsParsonnel.get('email').hasError('required')">
           Vui lòng nhập email nhân viên.
         </mat-error>
@@ -64,12 +64,24 @@
         </mat-form-field>
       </div>
       <div class="w-50">
-        <mat-label style="padding-right: 16px;">Giới tính : </mat-label>
-        <mat-radio-group formControlName="sex">
-          <mat-radio-button [value]="item.value" *ngFor="let item of sex" style="margin-right: 16px;">{{item.title}}
-          </mat-radio-button>
-        </mat-radio-group>
+        <mat-form-field appearance="outline">
+          <mat-label>Mật khẩu</mat-label>
+          <input [type]="hide ? 'password' : 'text'" formControlName="password_hash"  matInput
+            autocomplete="current-password">
+          <mat-error *ngIf="fromInsParsonnel.hasError('required', ['password_hash'])">Mật khẩu không được để trống</mat-error>
+          <button type="button" *ngIf="this.item.id==0" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide">
+            <mat-icon style="color: #555;">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+          </button>
+        </mat-form-field>
       </div>
+    </div>
+    <div class="w-100" style="margin-bottom: 16px;">
+      <mat-label style="padding-right: 16px;">Giới tính : </mat-label>
+      <mat-radio-group formControlName="sex">
+        <mat-radio-button [value]="item.value" *ngFor="let item of sex" style="margin-right: 16px;">{{item.title}}
+        </mat-radio-button>
+      </mat-radio-group>
     </div>
     <div class="dialog-bottom">
       <div>

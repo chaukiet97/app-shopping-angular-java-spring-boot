@@ -41,6 +41,7 @@ export class LoginComponent implements OnInit {
     this.userService.login(data).subscribe((userRes) => {
       this.lock = false;
       if (userRes.error == 200) {
+        this.userService.setFe2User(userRes.data[0])
         this.router.navigate(['admin/dashboard']);
         this.isLoginFail = false;
         this.snackBar.open("Đăng nhập thành công.", "Đóng")

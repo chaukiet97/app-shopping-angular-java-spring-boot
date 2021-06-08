@@ -74,7 +74,7 @@ export class PersonnelComponent implements OnInit {
   onUpdatePassword(id){
     const dialogRef = this.dialog.open(UpdatePasswordComponent, {
       width: '400px',
-      data: { id }
+      data: { id:id }
     });
 
     dialogRef.afterClosed().subscribe(result => {
