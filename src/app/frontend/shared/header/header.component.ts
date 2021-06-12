@@ -14,7 +14,7 @@ export class HeaderComponent implements OnInit {
     this.apiService.getMenu().subscribe(res => {
       if (res.error == 200) {
         this.menu = this.compaid(res.data);
-        console.log(this.menu);
+        // console.log(this.menu);
 
       }
     })

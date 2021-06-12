@@ -8,11 +8,12 @@ import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { FrontendRoutingModule } from './frontend.routing.module';
+import { ContactComponent } from './contact/contact.component';
 
 
 
 @NgModule({
-  declarations: [FrontendComponent, HomeComponent, HeaderComponent, FooterComponent],
+  declarations: [FrontendComponent, HomeComponent, HeaderComponent, FooterComponent, ContactComponent],
   imports: [
     CommonModule,
     FrontendRoutingModule,

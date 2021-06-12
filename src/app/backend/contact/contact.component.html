@@ -1,1 +1,67 @@
-<p>contact works!</p>
+<div class="app-contact">
+  <div class="mat-card contact">
+    <div class="header-contact">
+      <div class="title">
+        <h3 class="m-0">Danh Sách Liên Hệ</h3>
+      </div>
+      <div class="fillter">
+        <mat-form-field class="w-100">
+          <mat-label>Tìm kiếm</mat-label>
+          <input matInput (keyup)="applyFilter($event)" autocomplete="off">
+        </mat-form-field>
+      </div>
+    </div>
+    <mat-table [dataSource]="dataSource" matSort>
+      <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.id}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Tên </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="phone">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Số điện thoại </mat-header-cell>
+        <mat-cell *matCellDef="let row">{{row.phone}}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="email">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Email </mat-header-cell>
+        <mat-cell *matCellDef="let row">{{row.email}}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="subject">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Chủ đề </mat-header-cell>
+        <mat-cell *matCellDef="let row">{{row.subject}}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="message">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Nội dung</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{row.message}}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="day_send">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Ngày gửi</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{row.day_send|date:"HH:ss:mm dd/MM/yyyy"}}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="status">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Trạng thái</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{row.status == 0?'Chưa trả lời':'Đã trả lời'}}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="action">
+        <mat-header-cell *matHeaderCellDef> Thao tác </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <div style="text-align: end;">
+            <button class="btn-30" (click)="onReplyContact(row.id)" mat-icon-button matTooltip="Trả lời"
+              matTooltipPosition="right">
+              <mat-icon>reply</mat-icon>
+            </button>
+            <button class="btn-30" (click)="onDeleteContact(row)" mat-icon-button matTooltip="Xóa"
+              matTooltipPosition="right">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+        </mat-cell>
+      </ng-container>
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+    <mat-paginator [pageSizeOptions]="[10,25,50,100]"></mat-paginator>
+  </div>
+</div>

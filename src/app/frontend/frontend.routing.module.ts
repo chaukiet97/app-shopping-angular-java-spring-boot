@@ -1,3 +1,4 @@
+import { ContactComponent } from './contact/contact.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { FrontendComponent } from './frontend.component';
@@ -9,6 +10,8 @@ const routes: Routes = [
     children: [
       { path: '', redirectTo: 'trang-chu' },
       { path: 'trang-chu', component: HomeComponent },
+      { path: 'lien-he', component: ContactComponent },
+
     ]
   }
 ];

@@ -1,0 +1,33 @@
+.header{
+  padding: 16px 16px;
+  font-weight: 600;
+}
+
+.dialog-bottom{
+  position: relative;
+  background: #fff;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-top: 1px solid #C4C4C4;
+  padding: 8px 8px !important;
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+}
+.btn-save{
+
+  background: #00A65A;
+}
+.btn-save button{
+  color: #ffffff;
+  font-weight: 600;
+}
+.btn-cancel{
+  margin-right: 15px;
+}
+.btn-cancel button{
+  color: #00A65A;
+  font-weight: 700;
+}
+

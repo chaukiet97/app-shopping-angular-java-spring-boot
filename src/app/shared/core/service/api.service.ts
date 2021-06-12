@@ -1,3 +1,4 @@
+import { ApiResonse } from './../model/api';
 import { environment } from './../../../../environments/environment';
 import { Page, PageResonse } from './../model/pages';
 import { Observable } from 'rxjs';
@@ -13,5 +14,8 @@ export class ApiService {
 
   getMenu():Observable<PageResonse>{
     return this.http.get<PageResonse>(environment.api_host+`/api/getMenu/${1}`)
+  }
+  addContact(data):Observable<ApiResonse>{
+    return this.http.post<ApiResonse>(environment.api_host+`/api/addContact`,data);
   }
 }

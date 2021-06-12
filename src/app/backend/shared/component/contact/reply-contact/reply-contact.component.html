@@ -1,0 +1,28 @@
+<div class="reply-contact">
+  <form [formGroup]="fromReplyContact" *ngIf="fromReplyContact">
+    <div class="header">
+      Trả lời khác hàng {{fromReplyContact.value['name']}} <br>
+      Chủ đề : {{fromReplyContact.value['subject']}} <br>
+      Nội dung : {{fromReplyContact.value['message']}} <br>
+      Thời gian : {{fromReplyContact.value['day_send']|date:"HH:ss:mm dd/MM/yyyy"}}
+    </div>
+    <mat-form-field appearance="outline" class="w-100">
+      <mat-label>Nội dung trả lời</mat-label>
+      <textarea cdkTextareaAutosize matInput autocomplete="off" formControlName="reply"
+        cdkAutosizeMinRows="5"></textarea>
+      <mat-error *ngIf="fromReplyContact.get('reply').hasError('required')">
+        Vui lòng nhập nội dung trả lời khách hàng {{fromReplyContact.value['name']}}.
+      </mat-error>
+    </mat-form-field>
+    <div class="dialog-bottom">
+      <div class="w-100" style="display: flex;align-items: center; justify-content: flex-end;">
+        <div class="btn-cancel">
+          <button mat-stroked-button type="button" mat-dialog-close>Đóng</button>
+        </div>
+        <div class="btn-save">
+          <button mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="onReply()">Trả lời</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

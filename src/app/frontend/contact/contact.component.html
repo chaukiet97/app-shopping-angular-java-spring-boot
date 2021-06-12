@@ -1,0 +1,54 @@
+<div class="app-contact">
+  <div class="from-contact w-75">
+    <div class="title-contact">
+      <h1>Nhập thông tin liên hệ</h1>
+    </div>
+    <form [formGroup]="fromContact" *ngIf="fromContact">
+      <div style="display: flex; align-items: center;">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Họ và Tên</mat-label>
+          <input matInput autocomplete="off" formControlName="name" required>
+          <mat-error *ngIf="fromContact.hasError('required', ['name'])">
+            Họ và Tên không được để trống
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline" style="margin-left: 16px;" class="w-100">
+          <mat-label>Số điện thoại</mat-label>
+          <input matInput autocomplete="off" formControlName="phone" required>
+          <mat-error *ngIf="fromContact.hasError('required', ['phone'])">
+            Số điện thoại không được để trống
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline" style="margin-left: 16px;" class="w-100">
+          <mat-label>Email</mat-label>
+          <input matInput autocomplete="off" formControlName="email" required>
+          <mat-error *ngIf="fromContact.hasError('required', ['email'])">
+            Email không được để trống
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="w-100">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Chủ đề</mat-label>
+          <input matInput autocomplete="off" formControlName="subject" required>
+          <mat-error *ngIf="fromContact.hasError('required', ['subject'])">
+            Chủ đề không được để trống
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="w-100">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Nội dung</mat-label>
+          <textarea cdkTextareaAutosize matInput autocomplete="off" formControlName="message" required
+            cdkAutosizeMinRows="5"></textarea>
+          <mat-error *ngIf="fromContact.hasError('required', ['message'])">
+            Nội dung không được để trống
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="btn-send" style="text-align: right;">
+        <button mat-raised-button color="primary" [disabled]="fromContact.invalid" (click)="sendContact()">Primary</button>
+      </div>
+    </form>
+  </div>
+</div>

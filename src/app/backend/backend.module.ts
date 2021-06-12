@@ -1,3 +1,4 @@
+import { ContactService } from './../shared/core/service/contact.service';
 import { UserService } from './../shared/core/service/user.service';
 import { ProductsService } from './../shared/core/service/products.service';
 import { PagesService } from './../shared/core/service/pages.service';
@@ -35,6 +36,8 @@ import { SettingsComponent } from './settings/settings.component';
 import { InsPersonnelComponent } from './shared/component/personnel/ins-personnel/ins-personnel.component';
 import { DeletePersonnelComponent } from './shared/component/personnel/delete-personnel/delete-personnel.component';
 import { UpdatePasswordComponent } from './shared/component/personnel/update-password/update-password.component';
+import { ReplyContactComponent } from './shared/component/contact/reply-contact/reply-contact.component';
+import { DeleteContactComponent } from './shared/component/contact/delete-contact/delete-contact.component';
 
 
 
@@ -66,6 +69,8 @@ import { UpdatePasswordComponent } from './shared/component/personnel/update-pas
     InsPersonnelComponent,
     DeletePersonnelComponent,
     UpdatePasswordComponent,
+    ReplyContactComponent,
+    DeleteContactComponent,
   ],
   imports: [
     CommonModule,
@@ -92,7 +97,8 @@ import { UpdatePasswordComponent } from './shared/component/personnel/update-pas
     ImagesService,
     PagesService,
     ProductsService,
-    UserService
+    UserService,
+    ContactService
   ]
 
 })
