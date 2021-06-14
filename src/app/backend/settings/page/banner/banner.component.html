@@ -1,0 +1,66 @@
+<div class="mat-card product">
+  <div class="header-product">
+    <div class="title">
+      <h3 class="m-0">Danh Sách Sản Phẩm</h3>
+    </div>
+    <div class="fillter">
+      <mat-form-field class="w-100">
+        <mat-label>Tìm kiếm</mat-label>
+        <input matInput (keyup)="applyFilter($event)" autocomplete="off">
+      </mat-form-field>
+    </div>
+  </div>
+  <mat-table [dataSource]="dataSource" matSort>
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.id}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Tên </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="link">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Link </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.link}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="images">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Hình ảnh </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <img src="../../../assets/banner/{{row.images}}" alt="" height="50px" width="100%">
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="type">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Loại </mat-header-cell>
+      <mat-cell *matCellDef="let row">{{row.type == 0 ? 'Hình Banner' : 'Hình Quảng Cáo'}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="status">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Trạng Thái </mat-header-cell>
+      <mat-cell *matCellDef="let row">{{row.status == 1 ?"Bật" : "Tắt"}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="action">
+      <mat-header-cell *matHeaderCellDef> Thao tác </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <div style="text-align: end;">
+          <button class="btn-30" (click)="onInsBanner(row.id)" mat-icon-button matTooltip="Sửa"
+            matTooltipPosition="right">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button class="btn-30" (click)="onDeleteBanner(row)" mat-icon-button matTooltip="Xóa" matTooltipPosition="right">
+          <mat-icon>delete</mat-icon>
+        </button>
+        </div>
+      </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+  <mat-paginator [pageSizeOptions]="[10,25,50,100]"></mat-paginator>
+  <div class="fixed-action-btn">
+    <a matTooltip="Thêm Sản Phẩm" (click)="onInsBanner()" matTooltipPosition="above" mat-fab keyboard-create
+      color="warn">
+      <mat-icon>
+        add
+      </mat-icon>
+    </a>
+  </div>
+</div>

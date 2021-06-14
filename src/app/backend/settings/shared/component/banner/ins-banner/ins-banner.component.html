@@ -1,0 +1,68 @@
+<div class="app-ins-banner">
+  <div class="dialog-header">
+    <span>{{item.id?"Cập nhật Banner":"Thêm Banner"+ banner.name}}</span>
+  </div>
+  <div class="dialog-content">
+    <div class="from-banner">
+      <form [formGroup]="formBanner" *ngIf="formBanner">
+        <div class="w-100" style="display: flex;">
+          <div class="w-50">
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>Tên Banner</mat-label>
+              <input matInput autocomplete="off" formControlName="name">
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>Link Banner</mat-label>
+              <input matInput autocomplete="off" formControlName="link">
+            </mat-form-field>
+            <mat-radio-group aria-label="Select an option" formControlName="type">
+              <mat-label style="display: block; margin-bottom: 8px;">Link Banner</mat-label>
+              <mat-radio-button [value]="item.id" *ngFor="let item of type_banner" style="margin-left: 16px;">
+                {{item.label}}
+              </mat-radio-button>
+            </mat-radio-group>
+          </div>
+          <div class="w-50" style="margin-left: 16px;">
+            <div>
+              <mat-label>Hình ảnh Banner</mat-label>
+              <div class="imagesThumb" *ngIf="images">
+                <div *ngFor="let item of images.data ; let i = index">
+                  <img [src]="item.src" *ngIf="item.type==0 || item.type==1" />
+                  <span (click)="images._change($event,item)" *ngIf="item.type==0 || item.type==1" class="change">
+                    <mat-icon>photo</mat-icon>
+                  </span>
+                  <span (click)="images._del(i)" *ngIf="item.type==0 || item.type==1" class="del">
+                    <mat-icon>clear</mat-icon>
+                  </span>
+                  <span (click)="images._push($event)" *ngIf="item.type==2" class="add">
+                    <mat-icon>add</mat-icon>
+                  </span>
+                </div>
+                <input type="file" (change)="images._onchange($event)">
+              </div>
+            </div>
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>Mô tả Banner</mat-label>
+              <textarea cdkTextareaAutosize matInput autocomplete="off" formControlName="description"
+              cdkAutosizeMinRows="3"></textarea>
+            </mat-form-field>
+          </div>
+        </div>
+        <div>
+          <mat-slide-toggle formControlName="status">Trạng thái
+          </mat-slide-toggle>
+        </div>
+      </form>
+    </div>
+    <div class="dialog-bottom">
+      <div class="align-item-center">
+        <div class="btn-cancel">
+          <button mat-stroked-button type="button" mat-dialog-close>Đóng</button>
+        </div>
+        <div class="btn-save">
+          <button mat-button cdkFocusInitial (click)="onIns()" >{{item.id ? "Cập nhật Banner" : "Thêm Banner"}}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

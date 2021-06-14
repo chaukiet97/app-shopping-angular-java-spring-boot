@@ -32,7 +32,6 @@ import { CartComponent } from './cart/cart.component';
 import { DialogDeleteProductsComponent } from './shared/component/config/dialog-delete-products/dialog-delete-products.component';
 import { PersonnelComponent } from './personnel/personnel.component';
 import { CustomerComponent } from './customer/customer.component';
-import { SettingsComponent } from './settings/settings.component';
 import { InsPersonnelComponent } from './shared/component/personnel/ins-personnel/ins-personnel.component';
 import { DeletePersonnelComponent } from './shared/component/personnel/delete-personnel/delete-personnel.component';
 import { UpdatePasswordComponent } from './shared/component/personnel/update-password/update-password.component';
@@ -65,7 +64,6 @@ import { DeleteContactComponent } from './shared/component/contact/delete-contac
     DialogDeleteProductsComponent,
     PersonnelComponent,
     CustomerComponent,
-    SettingsComponent,
     InsPersonnelComponent,
     DeletePersonnelComponent,
     UpdatePasswordComponent,

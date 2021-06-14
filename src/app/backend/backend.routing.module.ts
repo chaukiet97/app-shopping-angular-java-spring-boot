@@ -25,8 +25,10 @@ const routes: Routes = [
       { path: 'customer', component: CustomerComponent },
       { path: 'content', component: ContentComponent },
       { path: 'contact', component: ContactComponent },
-      { path: 'settings', component: SettingsComponent },
-
+      {
+        path: 'settings',
+        loadChildren: () => import(`./settings/settings.module`).then(m => m.SettingsModule)
+      },
     ]
   }
 ];

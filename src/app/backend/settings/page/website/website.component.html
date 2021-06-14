@@ -1,0 +1,71 @@
+<div class="app-website">
+  <mat-card class="card-tables">
+    <mat-card-header>
+      <mat-card-title>Cấu hình Website</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="form-website">
+        <form [formGroup]="fromSettingWebsite" *ngIf="fromSettingWebsite">
+          <div class="website">
+            <div class="w-50" style="display: flex;">
+              <div class="w-50">
+                <mat-label>Logo</mat-label>
+                <div class="imagesThumb" *ngIf="logo">
+                  <div *ngFor="let item of logo.data ; let i = index">
+                    <img [src]="item.src" *ngIf="item.type==0 || item.type==1" />
+                    <span (click)="logo._change($event,item)" *ngIf="item.type==0 || item.type==1" class="change">
+                      <mat-icon>photo</mat-icon>
+                    </span>
+                    <span (click)="logo._del(i)" *ngIf="item.type==0 || item.type==1" class="del">
+                      <mat-icon>clear</mat-icon>
+                    </span>
+                    <span (click)="logo._push($event)" *ngIf="item.type==2" class="add">
+                      <mat-icon>add</mat-icon>
+                    </span>
+                  </div>
+                  <input type="file" (change)="logo._onchange($event)">
+                </div>
+              </div>
+              <div class="w-50">
+                <mat-label>Shortcut</mat-label>
+                <div class="imagesThumb" *ngIf="shortcut">
+                  <div *ngFor="let item of shortcut.data ; let i = index">
+                    <img [src]="item.src" *ngIf="item.type==0 || item.type==1" />
+                    <span (click)="shortcut._change($event,item)" *ngIf="item.type==0 || item.type==1" class="change">
+                      <mat-icon>photo</mat-icon>
+                    </span>
+                    <span (click)="shortcut._del(i)" *ngIf="item.type==0 || item.type==1" class="del">
+                      <mat-icon>clear</mat-icon>
+                    </span>
+                    <span (click)="shortcut._push($event)" *ngIf="item.type==2" class="add">
+                      <mat-icon>add</mat-icon>
+                    </span>
+                  </div>
+                  <input type="file" (change)="shortcut._onchange($event)">
+                </div>
+              </div>
+            </div>
+            <div class="w-50">
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Tên Website</mat-label>
+                <input matInput autocomplete="off" formControlName="title">
+              </mat-form-field>
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Mô tả ngắn</mat-label>
+                <textarea cdkTextareaAutosize matInput autocomplete="off" formControlName="description"
+                  cdkAutosizeMinRows="5"></textarea>
+              </mat-form-field>
+            </div>
+          </div>
+          <div style="display: flex; align-items: center; justify-content: flex-end;">
+            <div class="btn-save">
+              <button mat-button (click)="onSave()"
+                [disabled]="fromSettingWebsite.invalid">Lưu</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+</div>

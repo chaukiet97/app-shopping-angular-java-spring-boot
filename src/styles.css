@@ -157,9 +157,9 @@ h4 {
  display: flex;
  padding: 10px 15px!important;
  }
-.card-tables mat-card-header>div:first-child {
+/* .card-tables mat-card-header>div:first-child {
  display: none;
- }
+ } */
 .card-tables mat-card-header>div:nth-child(2) {
  flex: 1;
  }

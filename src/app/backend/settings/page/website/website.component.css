@@ -1,0 +1,48 @@
+.form-website{
+  padding:16px 16px;
+  /* display: flex;
+  align-items: center; */
+}
+.website{
+  display: flex;
+  width: 100%;
+}
+.imagesThumb input[type="file"] {
+  display: none;
+}
+.imagesThumb > div {
+  width: 100px;
+  height: 100px;
+  position: relative;
+  border: 1px dashed rgb(220, 222, 227);
+  overflow: hidden;
+  text-align: center;
+  margin: 5px;
+  display: inline-block;
+}
+.imagesThumb > div img {
+  height: 100%;
+}
+.imagesThumb > div span.del {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+.imagesThumb > div span.change,
+.imagesThumb > div span.add {
+  position: absolute;
+  left: calc(50% - 15px);
+  top: calc(50% - 15px);
+  padding: 5px 10px;
+  cursor: pointer;
+}
+.btn-save{
+
+  background: #00A65A;
+}
+.btn-save button{
+  color: #ffffff;
+  font-weight: 600;
+}

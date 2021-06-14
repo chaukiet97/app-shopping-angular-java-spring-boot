@@ -1,0 +1,18 @@
+.settings{
+  display: flex;
+  margin-top: 16px;
+}
+.active{
+  color: #fff;
+  background-color: #333;
+}
+.active:hover{
+  color: #fff;
+  background-color: #333;
+}
+.settings ::ng-deep .mat-card-header-text{
+  width: 100%;
+}
+.main{
+  margin-left: 16px;
+}

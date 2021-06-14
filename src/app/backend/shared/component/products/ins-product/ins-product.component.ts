@@ -13,14 +13,14 @@ import { environment } from 'src/environments/environment';
   selector: 'app-ins-product',
   templateUrl: './ins-product.component.html',
   styleUrls: ['./ins-product.component.css'],
-  providers:[LinkService,ImagesService]
+  providers: [LinkService, ImagesService]
 })
 export class InsProductComponent implements OnInit {
   fromProduct: FormGroup;
   group: any = [];
   brand: any = [];
   made_in: any = [];
-  product:any = [];
+  product: any = [];
   name = 'ckeditor4-angular';
   ckeConfig: CKEditor4.Config;
   mycontent: string;
@@ -41,7 +41,7 @@ export class InsProductComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.item.id) {
-      this.productsService.getProductById(this.item.id).subscribe(res=>{
+      this.productsService.getProductById(this.item.id).subscribe(res => {
         if (res.error == 200) {
           this.fromConfig(res.data);
           this.product = res.data;
@@ -77,20 +77,20 @@ export class InsProductComponent implements OnInit {
   fromConfig(item: any = {}) {
     let config = {
       id: [item.id || 0],
-      name: [item.name],
-      link: [item.link],
-      group_id: [item.group_id],
-      brand_id: [item.brand_id],
-      made_in_id: [item.made_in_id],
-      images: [this.images, new ImagesService()],
-      list_images: [this.list_images, new ImagesService()],
-      price: [item.price,],
-      price_sale: [item.price_sale,],
-      count: [item.count],
-      detail: [item.detail],
-      description: [item.description],
-      status: [item.status, 0],
-      create_time: [item.create_time, new Date()]
+      name: [item.name || "", Validators.required],
+      link: [item.link || "", Validators.required],
+      group_id: [item.group_id || "", Validators.required],
+      brand_id: [item.brand_id || "", Validators.required],
+      made_in_id: [item.made_in_id || "", Validators.required],
+      images: [this.images || new ImagesService()],
+      list_images: [this.list_images || new ImagesService()],
+      price: [item.price || "", Validators.required],
+      price_sale: [item.price_sale || "", Validators.required],
+      count: [item.count || "", Validators.required],
+      detail: [item.detail || "", Validators.required],
+      description: [item.description || "", Validators.required],
+      status: [item.status || 0, Validators.required],
+      create_time: [item.create_time || new Date(), , Validators.required]
     }
     this.fromProduct = this.formBuilder.group(config);
   }
@@ -127,33 +127,33 @@ export class InsProductComponent implements OnInit {
     // this.fromProduct.value['status'] = event.checked == true ? 1 : 0;
   }
   onIns() {
-    let list_images=[]
+    let list_images = []
     for (let index = 0; index < this.list_images._get(true)['add'].length; index++) {
-        list_images.push(this.list_images._get(true)['add'][index].name)
+      list_images.push(this.list_images._get(true)['add'][index].name)
     }
-    this.fromProduct.value['images']= this.images._get(true)['add'][0].name;
+    this.fromProduct.value['images'] = this.images._get(true)['add'][0].name;
     this.fromProduct.value['list_images'] = JSON.stringify(list_images);
-    this.productsService.inserProduct(this.fromProduct.value).subscribe((res)=>{
+    this.productsService.inserProduct(this.fromProduct.value).subscribe((res) => {
       if (res.error == 200) {
         this.snackBar.open(`Thêm sản phẩm ${this.fromProduct.value['name']} thành công `, "Đóng");
       }
-      else{
+      else {
         this.snackBar.open(`${res.message}`, "Đóng");
       }
     })
   }
-  onUpd(){
-    let list_images=[]
+  onUpd() {
+    let list_images = []
     for (let index = 0; index < this.list_images._get(true)['add'].length; index++) {
-        list_images.push(this.list_images._get(true)['add'][index]['name'])
+      list_images.push(this.list_images._get(true)['add'][index]['name'])
     }
-    this.fromProduct.value['images']= this.images._get(true)['add'][0]['name'];
+    this.fromProduct.value['images'] = this.images._get(true)['add'][0]['name'];
     this.fromProduct.value['list_images'] = JSON.stringify(list_images);
-    this.productsService.updateProduct(this.item.id, this.fromProduct.value).subscribe((res)=>{
+    this.productsService.updateProduct(this.item.id, this.fromProduct.value).subscribe((res) => {
       if (res.error == 200) {
-        this.snackBar.open(`Cập nhật sản phẩm vơi ${this.fromProduct.value['name']} thành công `, "Đóng");
+        this.snackBar.open(`Cập nhật sản phẩm vơi ${this.fromProduct.value['name']} thành công `, "Đóng", { duration: 2000 });
       }
-      else{
+      else {
         this.snackBar.open(`${res.message}`, "Đóng");
       }
     })
