@@ -1,252 +1,55 @@
-/* menu */
-.navbar-light .navbar-nav .nav-link{
-  white-space: nowrap;
-}
-@media(min-width: 787px){
-  .menu .navbar  li:hover{
-      background-color: #ffe177;
-  }
-  .fa-facebook-f:before {
-      content: "\f39e";
-  }
-  .nav-item.active{
-      color: #424343!important;
-      background: #ffe177 ! important;
-  }
-  .menu ul li{
-      color: #424343;
-      font-size: 14px;
-      font-family: "Montserrat",arial;
-      font-weight: 700;
-      padding-top: 15px;
-      padding-bottom: 10px;
-  }
-  .menu ul li li{
-      padding-top: 0px;
-      padding-bottom: 0px;
-  }
-  li:hover a{
-      color: #424343!important;
-  }
-
-  .menu li ul.dropdown-menu, li ul.dropdown-menu li ul.dropdown-menu {
-      position: absolute;
-      display: none;
-      left: auto;
-      top: 100%;
-      width:  auto!important;
-      background: #ffffff;
-      margin: 0;
-  }
-  .menu li ul.dropdown-menu li{
-      width: 100%;
-      margin: 0!important;
-      position: relative;
-  }
-  ul li:hover .dropdown-menu{
-      display: block;
-      margin-left: 0px;
-  }
-  .dropdown-menu li:hover{
-      background: #ffe177;
-  }
-  .dropdown-menu li:hover ul li a{
-      color: #424343!important;
-  }
-  .menu li ul.dropdown-menu li:hover ul.dropdown-menu{
-      display: block;
-  }
-  .menu li ul.dropdown-menu li ul.dropdown-menu{
-      top: 0;
-      left: 100%;
-  }
-  .link-btn-header{
-      color: #ffffff;
-      background-color:#cb2023;
-      border-radius: 4px;
-      display: inline-block;
-      text-align: center;
-      padding: 0.75em 1.5em;
-      font-size: 16px;
-      font-weight: 700;
-      line-height: 1.3em;
-      box-shadow: -4px 3px 0px 0px rgba(0, 0, 0, 0.2);
-      cursor: pointer;
-  }
-  .topbar-list{
-      margin-top: 30px;
-      margin-bottom: 30px;
-  }
-  .fix-menu{
-      background-color: #ffffff;
-      border-bottom: 1px solid #ebbe46;
-      box-shadow: 0 2px 2px #ffffff, 0 0 2px #ffffff;
-      top: 0px;
-      z-index: 20000;
-  }
-}
-@media(max-width:898px){
-  .nav-item.active{
-      color: #424343!important;
-      background: #ffe177 ! important;
-  }
-  .nav-item.active .nav-link{
-      color: #424343!important;
-  }
-  .header-topbar{
-      position: relative;
-      border-bottom: none;
-      background-color: transparent;
-  }
-  .col-md-9{
-      padding-right: 47px;
-      padding-bottom: 5px;
-  }
-  .col-md-3{
-      text-align: -webkit-center;
-  }
-  /* .menu .navbar-nav li a{
-      color:#fff!important;
-  } */
-  .nav-link{
-      color: white!important;
-  }
-  .nav-link{
-      font-size: 18px;
-      margin-bottom: 10px;
-      margin-top: 10x;
-
-
-  }
-  .menu .navbar-nav .parent-menu{
-      border-bottom: 1px solid #fff;
-  }
-  .dropdown-menu{
-    display: inline;
-    position: relative;
-    left: 50px;
-  }
-  .navbar{
-      max-height: 500px;
-      overflow-y: auto;
-    }
-}
-@media (min-width:991px){
-  .menu li .dropdown-menu li a i{
-      transform: rotate(-90deg)
-  }
-  .nav-item.active{
-      color: #424343!important;
-      background: #ffe177 ! important;
-  }
-  .nav-item.active .nav-link{
-      color: #424343!important;
-  }
-}
-@media(max-width:991px){
-  /* .menu .navbar-nav li a{
-
-
-  } */
-  .navbar{
-      max-height: 500px;
-      overflow-y: auto;
-    }
-  .nav-link{
-      color: white!important;
-  }
-  .nav-item.active .nav-link{
-      color: #424343!important;
-  }
-  .nav-item.active{
-      color: #424343!important;
-      background: #ffe177 ! important;
-  }
-  .menu li{
-      border-bottom: 1px solid white
-  }
-  .dropdown-menu li{
-      border-bottom: 0
-  }
-  .dropdown-menu{
-    display: inline;
-    position: relative;
-    left: 20px;
-  }
-  .fix-menu{
-      background-color: rgb(25 , 41 , 84);
-  }
-}
-.topbar-icons {
-  font-size: 23px;
-  line-height: 90px;
-  display: inline-block;
-  color: white;
-}
-.navbar-fixed {
-  z-index: 99999;
-position: fixed;
-opacity: .98;
-width: 100%;
-top: 0;
--webkit-animation: fadeInDown 800ms;
--moz-animation: fadeInDown 800ms;
--ms-animation: fadeInDown 800ms;
--o-animation: fadeInDown 800ms;
-animation: fadeInDown 800ms;
-}
-.icon-header{
-  width: 30px;
-  height: 30px;
-  color: #18216d!important;
-  background-color: #e4e5e6;
-}
-@media(min-width:1025){
-  .nav-item.active{
-      color: #424343!important;
-      background: #ffe177 ! important;
-  }
-  .fix-menu{
-      background-color: rgb(25 , 41 , 84);
-  }
-}
-.mdate {
-  font-size: 63px;
-  letter-spacing: -10px;
-  font-weight: 300;
-  color: #000;
-  padding-right: 20px;
-  margin-top: -10px;
-  font-family: 'Open Sans', sans-serif;
-  margin-bottom: -10px;
-}
-.nav-English{
-  /* background: #e20613; */
-  padding: 3px 2px;
-  cursor: pointer;
-}
-.phone:hover{
-  color: red;
-}
-a{
-  text-decoration: none
-}
-/* .nav-item.active{
-  color: #424343!important;
-  background: #ffe177 ! important;
-} */
-.searchbutton{
-  position: absolute;
-  right: 0;
-  top:100%;
-  z-index: 99;
-
-}
-.search{
+.banner-header-top img{
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  max-width: 100%;
   position: relative;
-  z-index: 99;
-
+  width: 100%;
+  margin: 0px;
+  height: 100px;
 }
-
-
-/* end menu */
+.header-top-start{
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+.header-top-item{
+  padding: 8px 16px;
+}
+.header-top-item a{
+  text-decoration: none;
+  color: #262626;
+  text-transform: uppercase;
+}
+.header-top-item:hover a{
+  text-decoration: none;
+  color: #f33;
+}
+.form-search ::ng-deep .mat-form-field-wrapper{
+  padding: 0px !important;
+}
+.check-cart{
+  text-align: center;
+}
+.menu {
+  position: relative;
+  z-index: 333;
+  box-shadow: 0 1px 1px 0 rgb(36 50 56 / 20%);
+}
+.menu ::ng-deep .mat-list-base .mat-list-item,
+ .menu ::ng-deep .mat-list-base .mat-list-option{
+  height: 32px;
+}
+.menu ::ng-deep .mat-list-base{
+  padding: 0px !important;
+}
+.menu ::ng-deep .mat-list-text a{
+  text-decoration: none;
+  color: #262626;
+}
+.menu ::ng-deep .mat-list-text:hover a{
+  color: #f33;
+}
+.menu ::ng-deep .owl-carousel .owl-item img{
+  height: 414px;
+}

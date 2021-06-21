@@ -1,0 +1,18 @@
+.form-webhook{
+  padding:16px 16px;
+  /* display: flex;
+  align-items: center; */
+}
+.webhook{
+  display: flex;
+  width: 100%;
+}
+
+.btn-save{
+
+  background: #00A65A;
+}
+.btn-save button{
+  color: #ffffff;
+  font-weight: 600;
+}

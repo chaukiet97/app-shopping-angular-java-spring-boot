@@ -1,0 +1,17 @@
+.app-product-frontend{
+  padding-top: 16px;
+}
+.title-product{
+  background: #ECF0F5;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+.list-product{
+  margin-top: 16px;
+}
+.paginator{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}

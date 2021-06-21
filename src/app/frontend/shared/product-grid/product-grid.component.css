@@ -1,0 +1,78 @@
+.app-product-grid{
+  cursor: pointer;
+  border-radius: 16px;
+  position: relative;
+  box-shadow: 0 0 10px rgb(0 0 0 / 13%);
+  overflow: hidden;
+}
+.title{
+  height: 40px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  font-size: 15px;
+  -webkit-line-clamp: 2;
+}
+
+.app-product-grid:hover .title{
+  color:#f33;
+  transition:all .5s ease 0s
+}
+.image-product img{
+  overflow: hidden;
+}
+
+.title{
+  color:#333}
+  @keyframes shine{
+    to{
+      left:100%
+    }
+  }
+.app-product-grid:hover .image-product::before{
+  animation:shine 1s
+}
+.image-product::before{
+  position:absolute;
+  top:0;
+  left:-68%;
+  z-index:2;
+  display:block;
+  content:"";
+  width:30%;
+  height:100%;
+  background:linear-gradient(90deg,hsla(0,0%,100%,0) 0,hsla(0,0%,100%,.3));
+  transform:skewX(-25deg)
+}
+.price_sale .new-price{
+  line-height: 22px;
+  height: 22px;
+  font-size: 18px;
+  color: #f33;
+}
+.price_old{
+  margin-top: 4px;
+  margin-right: 4px;
+  line-height: 14px;
+  height: 14px;
+  color: #9e9e9e;
+  font-size: 12px;
+  text-decoration: line-through;
+}
+.action{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.app-product-grid:hover .btn-add-cart button{
+  border-radius: 50%;
+  background: transparent;
+  background: #f33;
+  z-index: 0;
+  transition: color .2s;
+  color: #ffffff;
+  transition: 2s;
+}
+.btn-add-cart:hover button{
+  background: #333 !important;
+}

@@ -16,7 +16,7 @@ export class BannerComponent implements OnInit {
   banner: any = [];
   @ViewChild('table') table: MatTable<any>;
   dataSource: MatTableDataSource<any>;
-  displayedColumns = ['id', 'name', 'link', 'images', 'type', 'status', 'action'];
+  displayedColumns = ['id', 'name', 'link', 'images', 'type', 'status', 'create_time', 'action'];
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   constructor(

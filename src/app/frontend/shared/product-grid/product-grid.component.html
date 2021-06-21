@@ -1,0 +1,30 @@
+<div class="app-product-grid">
+  <mat-card>
+    <a [routerLink]="['/san-pham/'+ item.parent_link+ '/' +item.link]">
+      <div class="image-product">
+        <img mat-card-image src="../../../../assets/products/{{item.images}}" style="object-fit: cover;" [alt]="item.name">
+      </div>
+    </a>
+    <mat-card-title class="title">{{(item.name.length > 80)? ((item.name | slice:0:80) +' ...'):(item.name)}}
+    </mat-card-title>
+    <mat-card-actions class="action">
+      <div class="amount">
+        <div class="price_sale" *ngIf="item.price_sale!=0 && item.price_sale > 0">
+          <span class="new-price"> {{ item.price_sale | number}} ₫ </span>
+        </div>
+        <div class="price_old" *ngIf="item.price!=0 && item.price > 0">
+          <span
+            [ngClass]="{'old-price' : item.price_sale!=0 && item.price_sale > 0 , 'new-price' : item.price!=0 && item.price > 0}">
+            {{ item.price | number}} ₫
+          </span>
+
+        </div>
+      </div>
+      <div class="btn-add-cart">
+        <button mat-icon-button (click)="addCart(item)">
+          <mat-icon>add_shopping_cart</mat-icon>
+        </button>
+      </div>
+    </mat-card-actions>
+  </mat-card>
+</div>

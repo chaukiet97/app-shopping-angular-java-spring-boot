@@ -1,1 +1,55 @@
-<p>webhook works!</p>
+<div class="app-webhook">
+  <mat-card class="card-tables">
+    <mat-card-header>
+      <mat-card-title>Cấu hình Webhook</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="form-webhook">
+        <form [formGroup]="fromSettingWebhook" *ngIf="fromSettingWebhook">
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Tiêu đề</mat-label>
+            <input matInput autocomplete="off" formControlName="title">
+          </mat-form-field>
+          <div class="align-item-center">
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>Mô tả</mat-label>
+              <textarea cdkTextareaAutosize matInput autocomplete="off" formControlName="description"
+                cdkAutosizeMinRows="3"></textarea>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="w-100" style="margin-left: 16px;">
+              <mat-label>Hướng dẫn</mat-label>
+              <textarea cdkTextareaAutosize matInput autocomplete="off" formControlName="guide"
+                cdkAutosizeMinRows="3"></textarea>
+            </mat-form-field>
+          </div>
+          <div class="w-100">
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>Webhook URL</mat-label>
+              <input matInput autocomplete="off" formControlName="param1" disabled>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>Key bảo mật</mat-label>
+              <input matInput autocomplete="off" formControlName="param2">
+            </mat-form-field>
+            <div class="align-item-center">
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Tiền tố giao dịch</mat-label>
+                <input matInput autocomplete="off" formControlName="prefix">
+              </mat-form-field>
+              <mat-form-field appearance="outline" class="w-100" style="margin-left: 16px;">
+                <mat-label>Chênh lệch chấp nhận</mat-label>
+                <input matInput autocomplete="off" formControlName="difference">
+              </mat-form-field>
+            </div>
+          </div>
+          <div style="display: flex; align-items: center; justify-content: flex-end;">
+            <div class="btn-save">
+              <button mat-button (click)="onSave()" [disabled]="fromSettingWebhook.invalid">Lưu</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+</div>

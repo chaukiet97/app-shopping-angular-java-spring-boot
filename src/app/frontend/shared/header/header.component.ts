@@ -1,3 +1,4 @@
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ApiService } from './../../../shared/core/service/api.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -8,16 +9,42 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
   menu = [];
-  constructor(private apiService: ApiService) { }
+  width = 0;
+  category = [];
+  menu_top: any = [];
+  banner: any = [];
+  company: any = [];
+  slides: any = [];
+  formSearch: FormGroup;
+  constructor(
+    private apiService: ApiService,
+    private formBuilder: FormBuilder,
+  ) { }
 
   ngOnInit(): void {
     this.apiService.getMenu().subscribe(res => {
       if (res.error == 200) {
         this.menu = this.compaid(res.data);
-        // console.log(this.menu);
+        for (let index = 0; index < this.menu.length; index++) {
+          if (this.menu[index]['data']) {
+            this.category = this.menu[index]['data']
+          }
 
+        }
       }
     })
+    this.formSearch = this.formBuilder.group({
+      value: ['', Validators.required],
+    })
+    setTimeout(() => {
+      if (window["slides"]) {
+          window["slides"]();
+      }
+  }, 500);
+    this.getBannerHeaderTop();
+    this.getMenuHeader();
+    this.getCompany();
+    this.getAllSlide();
   }
   compaid(data) {
     let list = [];
@@ -56,6 +83,35 @@ export class HeaderComponent implements OnInit {
     }
     return compaidmenu(data, false);
 
+  }
+  getBannerHeaderTop() {
+    this.apiService.getBannerHeaderTop().subscribe(res => {
+      if (res.error === 200) {
+        this.banner = res.data;
+      }
+    })
+  }
+  getMenuHeader() {
+    this.apiService.getMenuHeader().subscribe((res) => {
+      if (res.error == 200) {
+        this.menu_top = res.data
+      }
+    })
+  }
+  getCompany() {
+    this.apiService.getCompany().subscribe(res => {
+      if (res.error === 200) {
+        this.company = res.data;
+      }
+    })
+  }
+  getAllSlide() {
+    this.apiService.getAllSlide().subscribe(res => {
+      if (res.error === 200) {
+        this.slides = res.data;
+
+      }
+    })
   }
 
 }

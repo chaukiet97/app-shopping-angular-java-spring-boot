@@ -1,3 +1,6 @@
+import { KeywordsService } from './../shared/core/service/keywords.service';
+import { TableService } from './../shared/core/service/table.service';
+import { ImagesService } from './../shared/core/service/images.service';
 import { ApiService } from './../shared/core/service/api.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './../shared/modules/material/material.module';
@@ -9,11 +12,18 @@ import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { FrontendRoutingModule } from './frontend.routing.module';
 import { ContactComponent } from './contact/contact.component';
+import { ProductComponent } from './product/product.component';
+import { ContendComponent } from './contend/contend.component';
+import { ContendDetailComponent } from './contend-detail/contend-detail.component';
+import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { ContendGroupComponent } from './contend-group/contend-group.component';
+import { ProductGroupComponent } from './product-group/product-group.component';
+import { ProductGridComponent } from './shared/product-grid/product-grid.component';
 
 
 
 @NgModule({
-  declarations: [FrontendComponent, HomeComponent, HeaderComponent, FooterComponent, ContactComponent],
+  declarations: [FrontendComponent, HomeComponent, HeaderComponent, FooterComponent, ContactComponent, ProductComponent, ContendComponent, ContendDetailComponent, ProductDetailComponent, ContendGroupComponent, ProductGroupComponent, ProductGridComponent],
   imports: [
     CommonModule,
     FrontendRoutingModule,
@@ -22,7 +32,11 @@ import { ContactComponent } from './contact/contact.component';
     ReactiveFormsModule,
   ],
   providers:[
-    ApiService
-  ]
+    ApiService,
+    ImagesService,
+    TableService,
+    KeywordsService
+  ],
+
 })
 export class FrontendModule { }

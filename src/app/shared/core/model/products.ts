@@ -51,3 +51,29 @@ export class Product {
   status: number;
   create_time: Date;
 }
+export class APIProductResponse{
+  error: number;
+  message: string;
+  data: APIProduct;
+}
+export class APIProduct{
+  id: number;
+  name: string;
+  link: string;
+  group_id: number;
+  made_in_id: number;
+  brand_id: number;
+  description: string;
+  detail: string;
+  price: number;
+  price_sale: number;
+  images: string;
+  list_images: string;
+  count: number;
+  status: number;
+  create_time: Date;
+  parent_link:string;
+  name_group:string;
+  name_brand:string;
+  name_made:string
+}

@@ -4,11 +4,11 @@
 }
 .active{
   color: #fff;
-  background-color: #333;
+  background-color: #333 !important;
 }
 .active:hover{
   color: #fff;
-  background-color: #333;
+  background-color: #333 !important;
 }
 .settings ::ng-deep .mat-card-header-text{
   width: 100%;
