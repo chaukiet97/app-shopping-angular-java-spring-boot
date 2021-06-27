@@ -43,8 +43,6 @@ export class ProductComponent implements OnInit {
 
         this.extract();
       }
-      console.log(this.cwstable.settings);
-
     })
   }
   extract = () => {

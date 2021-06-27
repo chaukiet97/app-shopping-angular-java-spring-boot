@@ -1,0 +1,60 @@
+<div class="app-cart-frontend bg-white">
+  <div class="container-main">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-9 col-12" style="padding: 0;">
+          <div class="info-cart">
+            <h3>Thông tin giỏ hàng</h3>
+            <mat-table [dataSource]="dataSource">
+              <ng-container matColumnDef="images">
+                <mat-header-cell *matHeaderCellDef > Hình ảnh </mat-header-cell>
+                <mat-cell *matCellDef="let row">
+                  <img src="../../../assets/products/{{row.images}}" alt="" srcset="" height="50px" width="50px">
+                </mat-cell>
+              </ng-container>
+              <ng-container matColumnDef="name">
+                <mat-header-cell *matHeaderCellDef > Tên Sản Phẩm </mat-header-cell>
+                <mat-cell *matCellDef="let row">
+                <a [routerLink]="['/san-pham/'+ row.parent_link+ '/' +row.link]">{{row.name}}</a>
+                </mat-cell>
+              </ng-container>
+              <ng-container matColumnDef="price">
+                <mat-header-cell *matHeaderCellDef > Giá Sản Phẩm </mat-header-cell>
+                <mat-cell *matCellDef="let row">
+                  <div *ngIf="row.price_sale>0">{{row.price_sale | number}} VND</div>
+                  <div *ngIf="row.price_sale == 0">{{row.price | number}} VND</div>
+                </mat-cell>
+              </ng-container>
+              <ng-container matColumnDef="count">
+                <mat-header-cell *matHeaderCellDef > Số lượng </mat-header-cell>
+                <mat-cell *matCellDef="let row">
+                  <mat-form-field appearance="outline" class="w-100">
+                    <input matInput type="number" [(ngModel)]="countOrder">
+                  </mat-form-field>
+                </mat-cell>
+              </ng-container>
+              <ng-container matColumnDef="action">
+                <mat-header-cell *matHeaderCellDef> Thao tác </mat-header-cell>
+                <mat-cell *matCellDef="let row">
+                  <div style="text-align: end;">
+                    <button class="btn-30" (click)="onDeleteContact(row)" mat-icon-button matTooltip="Xóa"
+                      matTooltipPosition="right">
+                      <mat-icon>delete</mat-icon>
+                    </button>
+                  </div>
+                </mat-cell>
+              </ng-container>
+              <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+              <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+            </mat-table>
+          </div>
+        </div>
+        <div class="col-md-3 col-12" style="padding: 0;">
+          <div class="info-order">
+            <h3>Thông tin đơn hàng</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

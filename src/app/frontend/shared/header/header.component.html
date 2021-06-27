@@ -7,10 +7,23 @@
   <div class="header-top">
     <div class="container-main">
       <div class="container-fuild">
-        <div class="row">
+        <div class="menu-top">
+          <div class="row">
             <div *ngFor="let item of menu_top" class="header-top-item">
               <a [routerLink]="item.link">{{item.name}}</a>
             </div>
+          </div>
+          <div class="acount" *ngIf="userService.getFe2User() || userService.getFe2Cus()">
+            <button mat-button [matMenuTriggerFor]="menu" *ngIf="userService.getFe2User()">Xin chào
+              {{userService.getFe2User().name}}</button>
+            <button mat-button [matMenuTriggerFor]="menu" *ngIf="userService.getFe2Cus()">Xin chào
+              {{userService.getFe2Cus().name}}</button>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item [routerLink]="['/infor/khach-hang']">Xem thông tin cá nhân</button>
+              <button mat-menu-item [routerLink]="['/infor/gio-hang']">Xem thông tin giỏ hàng</button>
+              <button mat-menu-item (click)="logout()">Đăng Xuất</button>
+            </mat-menu>
+          </div>
         </div>
       </div>
     </div>
@@ -28,16 +41,17 @@
             <form [formGroup]="formSearch" *ngIf="formSearch">
               <mat-form-field appearance="outline" class="w-100">
                 <mat-label>Tìm kiếm </mat-label>
-                <input matInput autocomplete="off" formControlName="value">
+                <input matInput autocomplete="off" formControlName="value" (keydown.enter)="onSearchProduct()">
                 <button mat-icon-button matSuffix [attr.aria-label]="'Tìm kiếm'" matTooltip="Tìm kiếm"
-                  matTooltipPosition="above">
+                  matTooltipPosition="above" (click)="onSearchProduct()">
                   <mat-icon>search</mat-icon>
                 </button>
               </mat-form-field>
             </form>
           </div>
           <div class="check-cart col-md-2" style="padding: 0px;">
-            <button mat-icon-button matTooltip="Kiểm tra giỏ hàng" matTooltipPosition="right">
+            <button mat-flat-button matTooltip="Kiểm tra giỏ hàng" matTooltipPosition="right" [matBadge]="cart"
+              matBadgeColor="warn" (click)="goCart()">
               <mat-icon>shopping_cart</mat-icon>
             </button>
           </div>

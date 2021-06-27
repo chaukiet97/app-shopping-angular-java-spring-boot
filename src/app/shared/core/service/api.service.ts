@@ -1,3 +1,4 @@
+import { CustomerResonse } from './../model/customer';
 import { ProductResonse, APIProductResponse } from './../model/products';
 import { BannerResonse, WebsiteResonse } from './../model/settings';
 import { ApiResonse } from './../model/api';
@@ -34,5 +35,32 @@ export class ApiService {
   }
   getAllProduct(): Observable<APIProductResponse> {
     return this.http.get<APIProductResponse>(environment.api_host + '/api/getAllProduct');
+  }
+  getProdutByLink(link): Observable<APIProductResponse> {
+    return this.http.get<APIProductResponse>(environment.api_host + `/api/getProduct/${link}`)
+  }
+  getProdutDetailByLink(link): Observable<APIProductResponse> {
+    return this.http.get<APIProductResponse>(environment.api_host + `/api/getProductDetail/${link}`)
+  }
+  getMenuFooter(): Observable<PageResonse> {
+    return this.http.get<PageResonse>(environment.api_host + `/api/getMenu/${3}`);
+  }
+  getMenuSupport(): Observable<PageResonse> {
+    return this.http.get<PageResonse>(environment.api_host + `/api/getMenu/${4}`);
+  }
+  getProductById(id): Observable<APIProductResponse> {
+    return this.http.get<APIProductResponse>(environment.api_host + `/api/getProductById/${id}`)
+  }
+  signup(data): Observable<CustomerResonse> {
+    return this.http.post<CustomerResonse>(environment.api_host + `/customer/insertCustomer`, data);
+  }
+  search(data): Observable<APIProductResponse> {
+    return this.http.post<APIProductResponse>(environment.api_host + `/api/searchProduct`, data)
+  }
+  getProductByType(type): Observable<APIProductResponse> {
+    return this.http.get<APIProductResponse>(environment.api_host + `/api/getProductByType/${type}`)
+  }
+  login(data): Observable<CustomerResonse> {
+    return this.http.post<CustomerResonse>(environment.api_host + `/api/login`, data);
   }
 }

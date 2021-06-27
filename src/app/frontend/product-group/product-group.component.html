@@ -1,1 +1,68 @@
-<p>product-group works!</p>
+<div class="product-group-frontend bg-white">
+  <div class="container-main">
+    <div class="container-fuild">
+      <ng-container *ngIf="product !=null; then first else second">
+      </ng-container>
+      <ng-template #first>
+        <div class="row">
+          <div class="col-12">
+            <div class="title-product">
+              <h2 class="text-center">{{title}}</h2>
+              <div class="line-style">
+                <span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row" *ngIf="cwstable.data.length > 0" style="margin-top: 24px;">
+          <div class="col-md-12 title-products">
+            <div class="pull-left ">
+              Số lượng sản phẩm
+              <strong>{{cwstable.settings.total}}</strong>
+            </div>
+            <div class="pull-right">
+              <span>Lọc theo tên : </span>
+              <button *ngFor="let col of cwstable.cols" (click)="cwstable._sorting(col.field)" mat-icon-button>
+                <mat-icon>filter_alt</mat-icon>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="row" style="margin-top: 24px;">
+          <div class="col-md-3 col-12" *ngFor="let rows of cwstable.data" style="padding: 0;margin-bottom: 16px;">
+            <app-product-grid class="card border-0" [item]="rows"></app-product-grid>
+          </div>
+        </div>
+        <div class="row" style="padding-bottom: 16px;">
+          <div class="col-md-12 col-12">
+            <div class="paginator">
+              <button mat-icon-button [disabled]="cwstable.settings['first'] > 1?false:true"
+                (click)="cwstable._previousnext(false)">
+                <mat-icon>first_page</mat-icon>
+              </button>
+              <button mat-icon-button [disabled]="(cwstable.settings['last'] < cwstable.settings['total'])?false:true"
+                (click)="cwstable._previousnext(true)">
+                <mat-icon>last_page</mat-icon>
+              </button>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+      <ng-template #second>
+        <div class="row">
+          <div class="col-12 text-center">
+            <img src="https://boyztomen.co.uk/assets/images/no-magento-product-found.jpg" alt="">
+            <div style="display: block; color: red; font-style: italic;">
+              Không có sản phẩm liên quan tới link {{link}}
+            </div>
+            <div class="btnsignin text-center" style="margin-top: 16px;">
+              <button type="button" mat-button class="btn" (click)="onBack()">
+                Trở về Trang Chủ
+              </button>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</div>

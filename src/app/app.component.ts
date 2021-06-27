@@ -15,8 +15,8 @@ export class AppComponent {
     private activatedRoute: ActivatedRoute,
   ) {}
   ngOnInit(): void {
-    if (!this.userService.getFe2User()) {
-      this.router.navigate(['acount']);
-    }
+    // if (!this.userService.getFe2User()) {
+    //   this.router.navigate(['acount']);
+    // }
   }
 }

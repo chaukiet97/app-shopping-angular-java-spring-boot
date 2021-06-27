@@ -1,0 +1,109 @@
+<div class="app-search-frontend bg-white">
+  <div class="container-main">
+    <div class="container-fluid">
+      <div class="search-order">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Tìm kiếm </mat-label>
+          <input matInput autocomplete="off" (keydown.enter)="search($event.target.value)">
+          <button mat-icon-button matSuffix [attr.aria-label]="'Tìm kiếm'" matTooltip="Tìm kiếm"
+            matTooltipPosition="above" (click)="search($event.target.value)">
+            <mat-icon>search</mat-icon>
+          </button>
+        </mat-form-field>
+      </div>
+      <ng-container *ngIf="product && product.lenght>0; then first else second">
+      </ng-container>
+      <ng-template #first>
+        <div class="row">
+          <div class="col-md-3 col-12"
+            [ngClass]="group.length==0 && brand.length ==0 && made_in.length ==0 ?'d-none':''" style="padding: 0;">
+            <mat-accordion class="example-headers-align">
+              <mat-expansion-panel *ngIf="group.length >0 ">
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    Danh mục Sản Phẩm
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+                <mat-checkbox *ngFor="let item of group" class="example-margin" (change)="filerGroup(item.id)"
+                  style="display: block;">
+                  {{item.name}}
+                </mat-checkbox>
+              </mat-expansion-panel>
+              <mat-expansion-panel *ngIf="brand.length >0 ">
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    Thương hiệu
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+                <mat-checkbox *ngFor="let item of brand" class="example-margin" (change)="filterBrand(item.id)"
+                  style="display: block;">
+                  {{item.name}}
+                </mat-checkbox>
+              </mat-expansion-panel>
+              <mat-expansion-panel *ngIf="made_in.length >0">
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    Nơi Sản Xuất
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+                <mat-checkbox *ngFor="let item of made_in" class="example-margin" (change)="filterMadeIn(item.id)"
+                  style="display: block;">
+                  {{item.name}}
+                </mat-checkbox>
+              </mat-expansion-panel>
+            </mat-accordion>
+          </div>
+          <div class=""
+            [ngClass]="group.length>0 && brand.length >0 && made_in.length >0 ?'col-md-9 col-12':'col-md-12 col-12'"
+            style="padding: 0;">
+            <div class="row" *ngIf="cwstable.data.length > 0">
+              <div class="col-md-12 title-product">
+                <div class="pull-left ">
+                  Có
+                  <strong>{{cwstable.settings.total}}</strong>
+                  sản phẩm tìm kiếm được với từ khóa " {{item}}"
+                </div>
+                <div class="pull-right">
+                  <span>Lọc theo tên : </span>
+                  <button *ngFor="let col of cwstable.cols" (click)="cwstable._sorting(col.field)" mat-icon-button>
+                    <mat-icon>filter_alt</mat-icon>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="row" *ngIf="cwstable.data.length > 0" style="margin-top: 16px;">
+              <div class="col-md-3 col-12" style="padding-bottom: 16px;padding-left: 8px;padding-right: 0px;"
+                *ngFor="let rows of cwstable.data">
+                <app-product-grid class="card border-0" [item]="rows"></app-product-grid>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row" style="padding-bottom: 16px;">
+          <div class="col-md-12 col-12">
+            <div class="paginator">
+              <button mat-icon-button [disabled]="cwstable.settings['first'] > 1?false:true"
+                (click)="cwstable._previousnext(false)">
+                <mat-icon>first_page</mat-icon>
+              </button>
+              <button mat-icon-button [disabled]="(cwstable.settings['last'] < cwstable.settings['total'])?false:true"
+                (click)="cwstable._previousnext(true)">
+                <mat-icon>last_page</mat-icon>
+              </button>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+      <ng-template #second>
+        <div class="row w-100">
+          <div class="col-12 w-100 text-center">
+            <div> " {{item}} " không có sản phẩm</div>
+            <div style="margin-top: 24px;">
+              <app-btn [name]="'Tiếp tục mua hàng'" [routerLink]="['/']"></app-btn>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</div>

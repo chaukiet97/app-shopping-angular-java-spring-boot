@@ -1,1 +1,85 @@
-<p>footer works!</p>
+<div class="app-footer" style="padding-top: 16px;">
+  <div class="container-main">
+    <div class="container-fuild">
+      <div class="row" style="padding-top: 24px;">
+        <div class="col-12">
+          <div class="row" style="padding-top: 16px;">
+            <div class="col-md-4 col-12" style="padding-top: 16px; padding-left: 0; padding-right: 0;">
+              <div class="logo text-center">
+                <a routerLink="/">
+                  <img src="../../../../assets/website/{{company.logo}}" [alt]="company.title" width="150px">
+                </a>
+                <div>{{company.description}}</div>
+
+                <div class="follow">
+                  <ul class="social">
+                    <li class="social-facebook">
+                      <a href="/">
+                        <i class="fa fa-facebook"></i>
+                      </a>
+                    </li>
+                    <li class="social-twitter">
+                      <a href="/">
+                        <i class="fa fa-twitter"></i>
+                      </a>
+                    </li>
+                    <li class="social-youtube 577">
+                      <a href="/">
+                        <i class="fa fa-youtube-play"></i>
+                      </a>
+                    </li>
+                    <li class="social-instagram">
+                      <a href="/">
+                        <i class="fa fa-instagram"></i>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 col-12" style="padding-top: 16px; padding-left: 0; padding-right: 0">
+              <h2>
+                <span>CHÍNH SÁCH KHÁCH HÀNG</span>
+              </h2>
+              <ul class="col-footer">
+                <li *ngFor="let item of menu_footer">
+                  <a [routerLink]="item.link">
+                    <!-- <mat-icon>arrow_forward</mat-icon> -->
+                    <span> {{item.name}}</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div class="col-md-4 col-12 col-footer" style="padding-top: 16px; padding-left: 0; padding-right: 0">
+              <h2>
+                <span>HỖ TRỢ KHÁCH HÀNG</span>
+              </h2>
+              <ul class="col-footer">
+                <li *ngFor="let item of menu_support">
+                  <a [routerLink]="item.link">
+                    <!-- <mat-icon>arrow_forward</mat-icon> -->
+                    <span> {{item.name}}</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="copyright">
+  <div class="container-main">
+    <div class="container-fluid">
+      <div class="row" style="padding: 8px 0px;">
+        <div class="col-md-12 col-12 text-center">
+          <h6> Copyright © 2021 {{company.title}} rights reserved | Powered by
+            <a href="https://www.facebook.com/chau.kiet.1997" style="color: #f33; text-decoration: none;"
+              target="_blank">Châu Văn Kiệt</a>
+          </h6>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

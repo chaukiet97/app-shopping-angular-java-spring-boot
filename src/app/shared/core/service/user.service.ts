@@ -1,3 +1,4 @@
+import { Customer } from './../model/customer';
 import { Users, UsersResonse } from './../model/user';
 import { environment } from './../../../../environments/environment';
 import { Observable } from 'rxjs';
@@ -9,30 +10,52 @@ import { Injectable } from '@angular/core';
 })
 export class UserService {
   private Fe2User: Users;
+  private Fe2Cus: Customer
 
   constructor(private http: HttpClient) { }
   setFe2User(user) {
     this.Fe2User = user;
     localStorage.setItem("Fe2User", JSON.stringify(user));
   }
+  setFe2Cus(customer){
+    this.Fe2Cus = customer;
+    localStorage.setItem("Fe2Cus", JSON.stringify(customer));
+  }
 
   clearFe2User() {
     localStorage.removeItem("Fe2User");
     this.Fe2User = null;
   }
+  clearFe2Cus(){
+    localStorage.removeItem("Fe2Cus");
+    this.Fe2Cus = null;
+  }
 
   clearFe2UserVariable() {
     this.Fe2User = null;
+  }
+  clearFe2CusVariable() {
+    this.Fe2Cus = null;
   }
 
   getFe2User(): Users {
     return JSON.parse(localStorage.getItem("Fe2User"));;
   }
 
+  getFe2Cus(): Users {
+    return JSON.parse(localStorage.getItem("Fe2Cus"));;
+  }
   checkFe2User() {
     if (this.Fe2User != null)
       return true;
     if (this.Fe2User != null)
+      return true;
+    return false;
+  }
+  checkFe2Cus() {
+    if (this.Fe2Cus != null)
+      return true;
+    if (this.Fe2Cus != null)
       return true;
     return false;
   }

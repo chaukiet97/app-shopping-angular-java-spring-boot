@@ -1,0 +1,51 @@
+.signup-user{
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+.form {
+  border-radius: 10px;
+  -webkit-box-shadow: 0 10px 15px rgb(138 87 231 / 10%);
+  box-shadow: 0 10px 15px rgb(138 87 231 / 10%);
+  font-weight: 700;
+  padding: 16px;
+}
+.title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #f33;
+  text-transform: uppercase;
+  font-family: Poppins,sans-serif;
+}
+.btnsignin button{
+  background-color:transparent;
+  color:#000;
+  position:relative;
+  border:2px solid #000;
+  z-index:1;
+  font-family:Poppins,sans-serif;
+  font-weight:700
+}
+.btn{
+  --hover:rgba(0, 0, 0, 0.432);
+  border-radius:0
+}
+.btn:hover{
+  -webkit-animation:1s btn;
+  animation:1s btn;
+  -webkit-box-shadow:0 0 0 1.5em rgba(255,255,255,0);
+  box-shadow:0 0 0 1.5em rgba(255,255,255,0)
+}
+@-webkit-keyframes btn{
+  0%{
+    -webkit-box-shadow:0 0 0 0 var(--hover);
+    box-shadow:0 0 0 0 var(--hover)
+  }
+}
+@keyframes btn{
+  0%{-webkit-box-shadow:0 0 0 0 var(--hover);box-shadow:0 0 0 0 var(--hover)}
+}
+.router-sigup{
+  text-decoration: none;
+  color: #000;
+  font-style: italic;
+}

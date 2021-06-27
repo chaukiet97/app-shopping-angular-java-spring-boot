@@ -1,0 +1,37 @@
+<div class="signin-user bg-white">
+  <div class="container-main">
+    <div class="container-fuild">
+      <div class="row" style="display: flex; justify-content: center;">
+        <div class="col-md-6 col-12">
+          <div class="tag-fieldset bg-white form">
+            <form [formGroup]="formSignin" *ngIf="formSignin">
+              <h2 class="title">Đăng Nhập</h2>
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Email</mat-label>
+                <input matInput formControlName="email">
+                <mat-error *ngIf="formSignin.get('email').hasError('required')">
+                  Vui lòng nhập email.
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Mật khẩu</mat-label>
+                <input [type]="hide ? 'password' : 'text'" formControlName="password" matInput>
+                <mat-error *ngIf="formSignin.hasError('required', ['password'])">Mật khẩu không được để trống
+                </mat-error>
+                <button type="button" mat-icon-button matSuffix (click)="hide = !hide"
+                  [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                  <mat-icon style="color: #555;">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+                </button>
+              </mat-form-field>
+              <a class="router-sigup" routerLink= '/dang-ky'>Bạn chưa có tài khoản, đăng ký tại đây</a>
+              <div class="btnsignin text-right">
+                <button type="button" mat-button class="btn" [disabled]="!formSignin.valid" (click)="onSignin()">
+                  <mat-icon>login</mat-icon> Đăng nhập</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

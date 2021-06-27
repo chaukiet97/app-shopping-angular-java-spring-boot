@@ -1,13 +1,22 @@
 <div class="app-product-grid">
-  <mat-card>
+  <div class="product-item">
     <a [routerLink]="['/san-pham/'+ item.parent_link+ '/' +item.link]">
+      <div class="sale" *ngIf="type==1">
+        <img src="../../../../assets/orther/band1.png" alt="">
+        <span>{{(item.price_sale/item.price)*100/100|percent}}</span>
+      </div>
+      <div class="new" *ngIf="type==2">
+        <div class="icon-new">
+          <span class="text-new">New</span>
+        </div>
+      </div>
       <div class="image-product">
-        <img mat-card-image src="../../../../assets/products/{{item.images}}" style="object-fit: cover;" [alt]="item.name">
+        <img src="../../../../assets/products/{{item.images}}" style="object-fit: cover;" [alt]="item.name">
       </div>
     </a>
-    <mat-card-title class="title">{{(item.name.length > 80)? ((item.name | slice:0:80) +' ...'):(item.name)}}
-    </mat-card-title>
-    <mat-card-actions class="action">
+    <div class="title">{{(item.name.length > 80)? ((item.name | slice:0:80) +' ...'):(item.name)}}
+    </div>
+    <div class="action">
       <div class="amount">
         <div class="price_sale" *ngIf="item.price_sale!=0 && item.price_sale > 0">
           <span class="new-price"> {{ item.price_sale | number}} ₫ </span>
@@ -21,10 +30,10 @@
         </div>
       </div>
       <div class="btn-add-cart">
-        <button mat-icon-button (click)="addCart(item)">
+        <button mat-icon-button (click)="addCart(false)">
           <mat-icon>add_shopping_cart</mat-icon>
         </button>
       </div>
-    </mat-card-actions>
-  </mat-card>
+    </div>
+  </div>
 </div>

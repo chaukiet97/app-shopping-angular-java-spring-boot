@@ -1,0 +1,27 @@
+.app-cart-frontend{
+  padding: 16px 0px;
+}
+.info-cart,.info-order{
+  padding: 0 16px;
+}
+mat-table{
+  width: 100%;
+}
+mat-header-cell,
+mat-cell{
+  width: 100%;
+}
+.mat-column-images{
+  flex:  0 10% ;;
+}
+.mat-column-name{
+  flex: 0 40%;
+  padding: 0 8px;
+}
+.mat-column-name a{
+  color: #000;
+  text-decoration: none;
+}
+.mat-column-name a:hover {
+  color: #f33;
+}

@@ -1,1 +1,164 @@
-<p>product-detail works!</p>
+<div class="bg-white detail-product">
+  <div class="container-main">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <ul>
+            <li>
+              <a [routerLink]="['/']"><small>Trang Chủ</small></a>
+            </li>/
+            <li>
+              <a routerLink="/san-pham/{{parent_link}}"><small>{{item.name_group}}</small></a>
+            </li>/
+            <li><small>{{item.name}}</small></li>
+          </ul>
+        </div>
+      </div>
+      <div class="row" style="margin-top: 16px;">
+        <div class="col-md-12 col-12" style="padding: 0;">
+          <div class="row">
+            <div class="col-md-6 col-sm-12 " style="padding: 0;">
+              <div class="row">
+                <div class="col-md-12 col-sm-12  text-center">
+                  <a data-fancybox="images-preview" class="fancybox" data-thumbs='{"autoStart":true}'
+                    href="../../../assets/products/{{item.images}}">
+                    <img width="100%" *ngIf="item.images   && item.images.length > 4" class="card-img"
+                      src="../../../assets/products/{{item.images}}" alt="{{item.images}}">
+                  </a>
+                  <span class="mt-1 mb-1">(Click vào hình để xem rõ hơn)</span>
+                </div>
+                <div class="col-md-12 col-sm-12">
+                  <div style="display: flex; align-items: center; justify-content: center;">
+                    <div class="position-relative" style="width:80px" *ngFor="let row of list.data; let i = index">
+                      <div class="w-100 mb-2 "
+                        [ngStyle]="{'opacity': (i1 == list.limit)? '0.3':'', 'background': i1 == list.limit ? 'white': ''}"
+                        (click)="isActive(row,i,false)"
+                        [ngClass]="{'d-none' : !row || row.length < 4 ,'border borde  r-danger' : list.active == i }">
+                        <img *ngIf="(row && row.length > 3)" class="rounded w-100 p-1"
+                          src="./../../assets/products/{{row}}">
+                      </div>
+                      <a class="nav-link p-0 text-black-50" class="fancybox" data-fancybox="images-preview"
+                        data-thumbs='{"autoStart":true}' href="./../../assets/products/{{row}}">
+                        <div class="font-weight-bold text-center"
+                          style="position: absolute; bottom: calc(50% - 8px); left: 0; right: 0;"
+                          *ngIf="i1 == list.limit">
+                          <mat-icon>fullscreen</mat-icon>
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-sm-12 " style="padding: 0;">
+              <div class="row" style="margin-left: 24px;">
+                <div class="border-bottom w-100">
+                  <h2 class="card-title" style="color:#f33">{{item.name}}</h2>
+                  <div style="display: flex;align-items: center;justify-content: space-between;">
+                    <span>
+                      Mã SP:&nbsp;
+                      <strong style="color:#f33">{{item.id}}</strong>
+                    </span>
+                    <span style="margin-left: 8px; margin-right: 8px">
+                      Xuất xứ:&nbsp;
+                      <strong style="color:#f33">{{item.name_made}}</strong>
+                    </span>
+                    <span>
+                      Thương hiệu:&nbsp;
+                      <strong style="color:#f33">{{item.name_brand}}</strong>
+                    </span>
+                  </div>
+                </div>
+                <div class="border-bottom w-100 ">
+                  <div style="display: flex;align-items: baseline; justify-content: space-between;">
+                    <p *ngIf="item.price!=0 && item.price > 0">
+                      <span> Giá bán:</span>
+                      <span style="font-weight: bold;"
+                        [ngStyle]="{'text-decoration' : item.price_sale!=0 && item.price_sale > 0 ? 'line-through' : '' , 'font-size': item.price_sale!=0 && item.price_sale > 0 ? '13px':'', 'color' : item.price_sale==0 || item.price_sale == 0 ? 'red' :''}">
+                        {{ item.price | number}} ₫
+                      </span>
+                    </p>
+                    <p *ngIf="item.price_sale!=0 && item.price_sale > 0">
+                      <span> Giá khuyến mãi:</span>
+                      <span style="color : #f33; font-weight: bold;">
+                        {{ item.price_sale | number}} ₫
+                      </span>
+                    </p>
+                    <p *ngIf="(item.price_sale==0 || item.price_sale == 0) && (item.price==0 || item.price == 0)">
+                      Liên hệ
+                    </p>
+                  </div>
+                  <div class="text-muted "
+                    style="display: flex; align-items: baseline; justify-content: space-between;">
+                    <div class="text-muted" style="font-size: 14px" *ngIf="item.price_sale!=0 && item.price_sale > 0">
+                      <small class="font-italic">
+                       <span> Tiết kiểm:</span>
+                       <span style="color: #f33;font-weight: bold;"> {{(item.price_sale/item.price)*100/100|percent}}</span>
+                      </small>
+                    </div>
+                    <div style="font-size: 14px">
+                      <span>Tình trạng</span>
+                      <span style="font-weight: bold; font-style: italic;color: #f33;">
+                        {{ (item.count >0) ? 'Còn hàng' : 'Hết hàng'}}</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="text-center" style="padding-top: 16px;">
+                  <div *ngIf="item.description && item.description.length > 0" class="card-tex text-justify"
+                    [innerHTML]="item.description | sanitizeHtml">
+                  </div>
+
+                  <div *ngIf="!item.description || item.description.length <= 0">
+                    <h5 class="d-flex">Không có mô tả sản phẩm.<a style="cursor: pointer;" [routerLink]="['/']">Tiếp
+                        tục mua hàng</a></h5>
+                  </div>
+                </div>
+
+                <div style="margin-top: 16px;">
+                  <app-btn style="margin-right: 16px;" [name]="'Mua ngay'" (click)="addcart(true)"></app-btn>
+                  <app-btn [name]="'Thêm giỏ hàng'" (click)="addcart(false)"></app-btn>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row" style="padding-top: 24px;">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+              <h5 class="card-title text-white"
+                style="font-size: 16px;background:#f33; font-weight: bold;padding-top: 8px; padding-bottom: 8px; margin: 0px;display: flex;align-items: center;padding-left: 16px;">
+                <mat-icon>details</mat-icon>
+                <span> Chi tiết sản phẩm</span>
+              </h5>
+            </div>
+            <div id="produceDetailMaps" class="col-12 col-sm-12 col-md-12 col-lg-12 text-justify detail-product">
+              <div class="w-100" style="padding-left: 16px; padding-right: 16px;"
+                [innerHTML]="item.detail | sanitizeHtml"></div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center"
+              *ngIf="!item.detail || item.detail.length <= 0">
+              <h5> Không có thông tin sản phẩm. </h5>
+              <app-btn [name]="'Tiếp tục mua hàng'" [routerLink]="['/']"></app-btn>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="bg-white" style="padding-top: 24px;">
+  <div class="container-main">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12 col-12" style="border-bottom: 2px solid #f33;padding: 16px 0px;">
+          <span class="text-white" style="background:#f33; font-size: 16px; padding: 8px 16px;">
+            Sản phẩm liên quan
+          </span>
+        </div>
+        <div class="w-100 row" style="margin-top: 16px;margin-bottom: 16px;">
+          <div class="col-md-3 col-12" *ngFor="let rows of data">
+            <app-product-grid [type]='0' [item]="rows"></app-product-grid>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

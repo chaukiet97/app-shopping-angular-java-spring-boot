@@ -1,1 +1,85 @@
-<p>home works!</p>
+<div class="app-home bg-white">
+  <div class="container-main">
+    <div class="container-fluid">
+      <div class="row w-100"
+        style="padding-top: 16px;">
+        <div class="col-md-3 col-12" style="padding: 0;">
+          <div class="home-top">
+            <a [routerLink]="['/']">
+              <div class="icon">
+                <mat-icon style="font-size: 67px; height: auto;width: auto;">local_shipping</mat-icon>
+              </div>
+              <div class="title">GIAO HÀNG MIỄN PHÍ</div>
+            </a>
+          </div>
+        </div>
+        <div class="col-md-3 col-12" style="padding: 0;">
+          <div class="home-top">
+            <a [routerLink]="['/']">
+              <div class="icon">
+                <mat-icon style="font-size: 67px; height: auto;width: auto;">restore</mat-icon>
+              </div>
+              <div class="title">HOÀN TRẢ MIỄN PHÍ</div>
+            </a>
+          </div>
+        </div>
+        <div class="col-md-3 col-12" style="padding: 0;">
+          <div class="home-top">
+            <a [routerLink]="['/']">
+              <div class="icon">
+                <mat-icon style="font-size: 67px; height: auto;width: auto;">payments</mat-icon>
+              </div>
+              <div class="title">NHIỀU PHƯƠNG THỨC THANH TOÁN</div>
+            </a>
+          </div>
+        </div>
+        <div class="col-md-3 col-12" style="padding: 0;">
+          <div class="home-top">
+            <a [routerLink]="['/']">
+              <div class="icon">
+                <mat-icon style="font-size: 67px; height: auto;width: auto;">support_agent</mat-icon>
+              </div>
+              <div class="title">HỖ TRỢ MIỄN PHÍ</div>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12" style="padding: 0;">
+          <h2 class="title-heading">
+            <span>Sản phẩm khuyến mãi</span>
+          </h2>
+          <div class="row">
+            <div class="col-md-3 col-12" style="margin-bottom: 24px; padding: 0;" *ngFor="let item of productSales">
+            <app-product-grid [type]='1' [item]="item"></app-product-grid>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12" style="padding: 0;">
+          <h2 class="title-heading">
+            <span>Sản phẩm mới</span>
+          </h2>
+          <div class="row">
+            <div class="col-md-3 col-12" style="margin-bottom: 24px; padding: 0;" *ngFor="let item of productNew">
+            <app-product-grid [type]='2' [item]="item"></app-product-grid>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12" style="padding: 0;">
+          <h2 class="title-heading">
+            <span>Sản phẩm nỗi bật</span>
+          </h2>
+          <div class="row">
+            <div class="col-md-3 col-12" style="margin-bottom: 24px; padding: 0;" *ngFor="let item of productHilight">
+            <app-product-grid [item]="item"></app-product-grid>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,94 @@
+.product-group-frontend{
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+.title-product h2{
+  font-size: 28px;
+  font-weight: 700;
+  color: #f33;
+  text-transform: uppercase;
+  font-family: Poppins,sans-serif;
+}
+.line-style {
+  background: rgba(0, 0, 0, 0.07);
+  margin: 10px auto 0 auto;
+  height: 1px;
+  position: absolute;
+  width: 33%;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+.line-style:before {
+  background: #f33;
+  content: "";
+  display: block;
+  height: 1px;
+  position: absolute;
+  width: 100px;
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+.line-style span {
+  display: block;
+  background: #fff;
+  border: 1px solid #192954;
+  height: 10px;
+  position: absolute;
+  top: -5px;
+  width: 10px;
+  border-radius: 100% 100% 100% 100%;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+.title-product:hover .line-style:before {
+  width: 75%;
+}
+.btnsignin button{
+  background-color:transparent;
+  color:#000;
+  position:relative;
+  border:2px solid #000;
+  z-index:1;
+  font-family:Poppins,sans-serif;
+  font-weight:700
+}
+.btn{
+  --hover:rgba(0, 0, 0, 0.432);
+  border-radius:0
+}
+.btn:hover{
+  -webkit-animation:1s btn;
+  animation:1s btn;
+  -webkit-box-shadow:0 0 0 1.5em rgba(255,255,255,0);
+  box-shadow:0 0 0 1.5em rgba(255,255,255,0)
+}
+@-webkit-keyframes btn{
+  0%{
+    -webkit-box-shadow:0 0 0 0 var(--hover);
+    box-shadow:0 0 0 0 var(--hover)
+  }
+}
+@keyframes btn{
+  0%{-webkit-box-shadow:0 0 0 0 var(--hover);box-shadow:0 0 0 0 var(--hover)}
+}
+.router-sigup{
+  text-decoration: none;
+  color: #000;
+  font-style: italic;
+}
+.title-products{
+  background: #ECF0F5;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+.paginator{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}

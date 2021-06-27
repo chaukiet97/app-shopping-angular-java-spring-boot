@@ -1,3 +1,8 @@
+import { LinkService } from './../shared/core/service/link.service';
+import { SanitizeHtmlPipe } from './sanitizeHtml.pipe';
+import { SignupComponent } from './signup/signup.component';
+import { SigninComponent } from './signin/signin.component';
+import { CartService } from './../shared/core/service/cart.service';
 import { KeywordsService } from './../shared/core/service/keywords.service';
 import { TableService } from './../shared/core/service/table.service';
 import { ImagesService } from './../shared/core/service/images.service';
@@ -19,11 +24,36 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
 import { ContendGroupComponent } from './contend-group/contend-group.component';
 import { ProductGroupComponent } from './product-group/product-group.component';
 import { ProductGridComponent } from './shared/product-grid/product-grid.component';
+import { PageComponent } from './page/page.component';
+import { CartComponent } from './cart/cart.component';
+import { BtnComponent } from './shared/btn/btn.component';
+import { SearchComponent } from './search/search.component';
 
 
 
 @NgModule({
-  declarations: [FrontendComponent, HomeComponent, HeaderComponent, FooterComponent, ContactComponent, ProductComponent, ContendComponent, ContendDetailComponent, ProductDetailComponent, ContendGroupComponent, ProductGroupComponent, ProductGridComponent],
+  declarations: [
+    FrontendComponent,
+    HomeComponent,
+    HeaderComponent,
+    FooterComponent,
+    ContactComponent,
+    ProductComponent,
+    ContendComponent,
+    ContendDetailComponent,
+    ProductDetailComponent,
+    ContendGroupComponent,
+    ProductGroupComponent,
+    ProductGridComponent,
+    PageComponent,
+    CartComponent,
+    SigninComponent,
+    SignupComponent,
+    SanitizeHtmlPipe,
+    BtnComponent,
+    SearchComponent,
+
+  ],
   imports: [
     CommonModule,
     FrontendRoutingModule,
@@ -31,11 +61,13 @@ import { ProductGridComponent } from './shared/product-grid/product-grid.compone
     FormsModule,
     ReactiveFormsModule,
   ],
-  providers:[
+  providers: [
     ApiService,
     ImagesService,
     TableService,
-    KeywordsService
+    KeywordsService,
+    CartService,
+    LinkService
   ],
 
 })

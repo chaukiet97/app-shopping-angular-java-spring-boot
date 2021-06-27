@@ -1,3 +1,8 @@
+import { SearchComponent } from './search/search.component';
+import { PageComponent } from './page/page.component';
+import { SignupComponent } from './signup/signup.component';
+import { SigninComponent } from './signin/signin.component';
+import { CartComponent } from './cart/cart.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { ProductGroupComponent } from './product-group/product-group.component';
 import { ContendDetailComponent } from './contend-detail/contend-detail.component';
@@ -23,6 +28,12 @@ const routes: Routes = [
       { path: 'tin-tuc/:parent_link/:link', component: ContendDetailComponent },
       { path: 'san-pham/:parent_link', component: ProductGroupComponent },
       { path: 'san-pham/:parent_link/:link', component: ProductDetailComponent },
+      { path: 'gio-hang', component: CartComponent },
+      { path: 'dang-nhap', component: SigninComponent},
+      { path: 'dang-ky', component: SignupComponent},
+			{ path: 'search/:link', component: SearchComponent },
+      {path:'infor', loadChildren: () => import(`./infor/infor.module`).then(m => m.InforModule)},
+			// { path: ':link', component: PageComponent },
     ]
   }
 ];

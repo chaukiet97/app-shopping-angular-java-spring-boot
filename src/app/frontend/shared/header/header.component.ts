@@ -1,3 +1,8 @@
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { UserService } from './../../../shared/core/service/user.service';
+import { LinkService } from './../../../shared/core/service/link.service';
+import { Router, ActivatedRoute } from '@angular/router';
+import { CartService } from './../../../shared/core/service/cart.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ApiService } from './../../../shared/core/service/api.service';
 import { Component, OnInit } from '@angular/core';
@@ -16,9 +21,15 @@ export class HeaderComponent implements OnInit {
   company: any = [];
   slides: any = [];
   formSearch: FormGroup;
+  cart: any;
   constructor(
     private apiService: ApiService,
     private formBuilder: FormBuilder,
+    private apiCart: CartService,
+    public route: ActivatedRoute,
+    public router: Router,
+    public userService: UserService,
+    private snackbar:MatSnackBar
   ) { }
 
   ngOnInit(): void {
@@ -38,9 +49,10 @@ export class HeaderComponent implements OnInit {
     })
     setTimeout(() => {
       if (window["slides"]) {
-          window["slides"]();
+        window["slides"]();
       }
-  }, 500);
+    }, 500);
+    this.cart = this.apiCart.length();
     this.getBannerHeaderTop();
     this.getMenuHeader();
     this.getCompany();
@@ -112,6 +124,26 @@ export class HeaderComponent implements OnInit {
 
       }
     })
+  }
+  onSearchProduct() {
+
+    this.router.navigate(['/search/' + this.formSearch.value['value']]);
+
+  }
+  goCart() {
+    this.router.navigate(['/gio-hang']);
+  }
+  logout(){
+    if (this.userService.getFe2User()) {
+      this.userService.clearFe2User();
+      this.router.navigate(['/']);
+      this.snackbar.open("Đăng xuất thành công", "Đóng")
+    } else {
+      this.userService.clearFe2Cus();
+      this.router.navigate(['/']);
+      this.snackbar.open("Đăng xuất thành công", "Đóng")
+
+    }
   }
 
 }

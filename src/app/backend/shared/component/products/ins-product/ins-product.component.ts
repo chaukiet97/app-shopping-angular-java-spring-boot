@@ -28,6 +28,11 @@ export class InsProductComponent implements OnInit {
   checkStatus = 1;
   public images = new ImagesService();
   public list_images = new ImagesService();
+  type_product = [
+    { id: 1, value: "Sản Phẩm Khuyến Mãi" },
+    { id: 2, value: "Sản Phẩm Mới" },
+    { id: 3, value: "Sản Phẩm Nỗi Bật" }
+  ]
   constructor(
     private formBuilder: FormBuilder,
     public dialogRef: MatDialogRef<InsProductComponent>,
@@ -43,13 +48,13 @@ export class InsProductComponent implements OnInit {
     if (this.item.id) {
       this.productsService.getProductById(this.item.id).subscribe(res => {
         if (res.error == 200) {
-          this.fromConfig(res.data);
           this.product = res.data;
           this.mycontent = res.data.detail;
           const imagesConfig = { path: 'http://localhost:4200/../../assets/products/', data: res.data.images };
           this.images._ini(imagesConfig);
           const list_imagesConfig = { path: 'http://localhost:4200/../../assets/products/', data: JSON.parse(res.data.list_images), multiple: true };
           this.list_images._ini(list_imagesConfig);
+          this.fromConfig(res.data);
         }
       })
 
@@ -77,20 +82,21 @@ export class InsProductComponent implements OnInit {
   fromConfig(item: any = {}) {
     let config = {
       id: [item.id || 0],
-      name: [item.name || "", Validators.required],
-      link: [item.link || "", Validators.required],
-      group_id: [item.group_id || "", Validators.required],
-      brand_id: [item.brand_id || "", Validators.required],
-      made_in_id: [item.made_in_id || "", Validators.required],
+      name: [item.name, Validators.required],
+      link: [item.link, Validators.required],
+      group_id: [item.group_id, Validators.required],
+      brand_id: [item.brand_id, Validators.required],
+      made_in_id: [item.made_in_id, Validators.required],
       images: [this.images || new ImagesService()],
       list_images: [this.list_images || new ImagesService()],
-      price: [item.price || "", Validators.required],
-      price_sale: [item.price_sale || "", Validators.required],
-      count: [item.count || "", Validators.required],
-      detail: [item.detail || "", Validators.required],
-      description: [item.description || "", Validators.required],
-      status: [item.status || 0, Validators.required],
-      create_time: [item.create_time || new Date(), , Validators.required]
+      price: [item.price, Validators.required],
+      price_sale: [item.price_sale, Validators.required],
+      count: [item.count, Validators.required],
+      type: [item.type || 1],
+      detail: [item.detail, Validators.required],
+      description: [item.description, Validators.required],
+      status: [0, Validators.required],
+      create_time: [item.create_time, Validators.required]
     }
     this.fromProduct = this.formBuilder.group(config);
   }
@@ -147,7 +153,9 @@ export class InsProductComponent implements OnInit {
     for (let index = 0; index < this.list_images._get(true)['add'].length; index++) {
       list_images.push(this.list_images._get(true)['add'][index]['name'])
     }
-    this.fromProduct.value['images'] = this.images._get(true)['add'][0]['name'];
+    this.fromProduct.value['images'] =this.images.action == false ? this.images.data[0].name : this.images._get(true)['add'][0].name;
+    // this.fromInsParsonnel.value['avatar'] = this.images.action == false ? this.images.data[0].name : this.images._get(true)['add'][0].name;
+
     this.fromProduct.value['list_images'] = JSON.stringify(list_images);
     this.productsService.updateProduct(this.item.id, this.fromProduct.value).subscribe((res) => {
       if (res.error == 200) {

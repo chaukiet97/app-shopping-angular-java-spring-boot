@@ -47,16 +47,17 @@ export class Product {
   price_sale: number;
   images: string;
   list_images: string;
+  type: number;
   count: number;
   status: number;
   create_time: Date;
 }
-export class APIProductResponse{
+export class APIProductResponse {
   error: number;
   message: string;
   data: APIProduct;
 }
-export class APIProduct{
+export class APIProduct {
   id: number;
   name: string;
   link: string;
@@ -71,9 +72,10 @@ export class APIProduct{
   list_images: string;
   count: number;
   status: number;
+  type:number;
   create_time: Date;
-  parent_link:string;
-  name_group:string;
-  name_brand:string;
-  name_made:string
+  parent_link: string;
+  name_group: string;
+  name_brand: string;
+  name_made: string
 }
