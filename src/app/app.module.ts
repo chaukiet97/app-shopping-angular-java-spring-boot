@@ -1,3 +1,4 @@
+import { PersonnelGuard } from './shared/core/service/personnel.guard';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './shared/modules/material/material.module';
 import { NgModule } from '@angular/core';
@@ -23,7 +24,7 @@ import { CKEditorModule } from 'ckeditor4-angular';
     ReactiveFormsModule,
     CKEditorModule,
   ],
-  providers: [],
+  providers: [PersonnelGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

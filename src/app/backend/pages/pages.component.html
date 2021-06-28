@@ -43,11 +43,16 @@
   </div>
   <div class="w-75">
     <div class="page mat-card">
-      <div class="fillter">
-        <mat-form-field class="w-50">
-          <mat-label>Tìm kiếm</mat-label>
-          <input matInput (keyup)="applyFilter($event)" autocomplete="off">
-        </mat-form-field>
+      <div class="mat-card-header header">
+        <div class="tite">
+          <h3>Danh sách trang </h3>
+        </div>
+        <div class="fillter">
+          <mat-form-field class="w-100">
+            <mat-label>Tìm kiếm</mat-label>
+            <input matInput (keyup)="applyFilter($event)" autocomplete="off">
+          </mat-form-field>
+        </div>
       </div>
       <mat-table [dataSource]="dataSourcePage" matSort>
         <ng-container matColumnDef="id">
@@ -82,7 +87,8 @@
               matTooltipPosition="right">
               <mat-icon>edit</mat-icon>
             </button>
-            <button class="btn-30" (click)="onDeletePage(row)" mat-icon-button matTooltip="Xóa" matTooltipPosition="right">
+            <button class="btn-30" (click)="onDeletePage(row)" mat-icon-button matTooltip="Xóa"
+              matTooltipPosition="right">
               <mat-icon>delete</mat-icon>
             </button>
           </mat-cell>

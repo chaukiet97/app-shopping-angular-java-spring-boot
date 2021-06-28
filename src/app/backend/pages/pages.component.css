@@ -1,6 +1,13 @@
 .app-page{
   display: flex;
 }
+.header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 24px;
+  padding-top: 24px;
+}
 .page{
   margin-left: 16px;
   padding-top: 8px;
