@@ -1,3 +1,4 @@
+import { ContentService } from './../shared/core/service/content.service';
 import { ContactService } from './../shared/core/service/contact.service';
 import { UserService } from './../shared/core/service/user.service';
 import { ProductsService } from './../shared/core/service/products.service';
@@ -37,6 +38,10 @@ import { DeletePersonnelComponent } from './shared/component/personnel/delete-pe
 import { UpdatePasswordComponent } from './shared/component/personnel/update-password/update-password.component';
 import { ReplyContactComponent } from './shared/component/contact/reply-contact/reply-contact.component';
 import { DeleteContactComponent } from './shared/component/contact/delete-contact/delete-contact.component';
+import { InsGroupComponent } from './shared/component/content/ins-group/ins-group.component';
+import { InsContendComponent } from './shared/component/content/ins-contend/ins-contend.component';
+import { DeleteGroupContendComponent } from './shared/component/content/delete-group-contend/delete-group-contend.component';
+import { DeleteContendComponent } from './shared/component/content/delete-contend/delete-contend.component';
 
 
 
@@ -69,6 +74,10 @@ import { DeleteContactComponent } from './shared/component/contact/delete-contac
     UpdatePasswordComponent,
     ReplyContactComponent,
     DeleteContactComponent,
+    InsGroupComponent,
+    InsContendComponent,
+    DeleteGroupContendComponent,
+    DeleteContendComponent,
   ],
   imports: [
     CommonModule,
@@ -89,6 +98,10 @@ import { DeleteContactComponent } from './shared/component/contact/delete-contac
     InsPersonnelComponent,
     DeletePersonnelComponent,
     UpdatePasswordComponent,
+    InsGroupComponent,
+    InsContendComponent,
+    DeleteGroupContendComponent,
+    DeleteContendComponent,
   ],
   providers:[
     LinkService,
@@ -96,7 +109,9 @@ import { DeleteContactComponent } from './shared/component/contact/delete-contac
     PagesService,
     ProductsService,
     UserService,
-    ContactService
+    ContactService,
+    ContentService,
+
   ]
 
 })

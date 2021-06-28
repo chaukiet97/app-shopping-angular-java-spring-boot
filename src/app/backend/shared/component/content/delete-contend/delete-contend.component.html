@@ -1,0 +1,20 @@
+<div class="config-delete">
+  <div class="icon text-center">
+    <mat-icon>warning</mat-icon>
+  </div>
+  <h4>Bạn có thật sự muốn xóa?</h4>
+  <div class="info-delete">
+    Thao tác không thể hoàn lại. Xin vui lòng cân nhắc. Để có thể thực hiện thao tác này vui lòng điền
+    "{{item.data.name}}" vào
+    ô dưới để xác nhận xóa liên kết.
+  </div>
+  <form [formGroup]="formDeletepage" *ngIf="formDeletepage">
+    <mat-form-field appearance="outline" class="w-100">
+      <input matInput autocomplete="off" formControlName="value" required>
+    </mat-form-field>
+    <div class="btn-save">
+      <button mat-raised-button color="warn" type="button" keyboard-save (click)="onDelete()" [disabled]="!formDeletepage.value.value">Tôi xác nhận xóa</button>
+    </div>
+  </form>
+
+</div>

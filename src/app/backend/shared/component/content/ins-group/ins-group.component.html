@@ -1,0 +1,23 @@
+<div class="ins-group">
+  <h2 mat-dialog-title>{{this.item.id!=0 ?"Sửa Nhóm Tin tức ":"Thêm Nhóm Tin tức"}}</h2>
+  <form [formGroup]="formContentGroup" *ngIf="formContentGroup">
+    <mat-form-field appearance="outline" class="w-100">
+      <mat-label>Tên nhóm Tin tức</mat-label>
+      <input matInput autocomplete="off" formControlName="name" (keyup)="onChangeLink($event)" required>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="w-100">
+      <mat-label>Link nhóm Tin tức</mat-label>
+      <input matInput autocomplete="off" formControlName="link" (keyup)="link._keyup($event)" [(ngModel)]="formContentGroup.value.link" required>
+    </mat-form-field>
+  </form>
+  <div class="dialog-bottom">
+    <div class="btn-cancel">
+      <button mat-stroked-button type="button" mat-dialog-close>HỦY</button>
+    </div>
+    <div class="btn-save">
+      <button mat-button type="button" keyboard-save (click)="onIns()" *ngIf="item.id==0">Thêm</button>
+      <button mat-button type="button" keyboard-save (click)="onUp()" *ngIf="item.id!=0">Cập nhật</button>
+
+    </div>
+  </div>
+</div>

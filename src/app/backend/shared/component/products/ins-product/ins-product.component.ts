@@ -130,7 +130,7 @@ export class InsProductComponent implements OnInit {
     this.fromProduct.value['detail'] = event.editor.getData();
   }
   onChangeStatus(event: MatSlideToggleChange) {
-    // this.fromProduct.value['status'] = event.checked == true ? 1 : 0;
+    this.fromProduct.value['status'] = event.checked == true ? 1 : 0;
   }
   onIns() {
     let list_images = []

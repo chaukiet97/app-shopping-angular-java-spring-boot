@@ -1,0 +1,31 @@
+.app-content-backend{
+  display: flex;
+  justify-content: space-between;
+}
+.header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.content{
+  margin-left: 16px;
+  margin-top: 16px !important;
+}
+.fixed-action-btn {
+  position: fixed;
+  bottom: 45px;
+  right: 24px;
+  padding-top: 15px;
+  margin-bottom: 0;
+  z-index: 997;
+}
+.fillter {
+  text-align: end;
+}
+.mat-column-id,
+.mat-column-action{
+  flex: 0 5%;
+}
+.mat-column-images{
+  flex: 0 15%;
+}

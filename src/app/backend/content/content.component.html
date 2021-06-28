@@ -1,1 +1,98 @@
-<p>content works!</p>
+<div class="app-content-backend">
+  <div class="w-25">
+    <mat-card style="margin-top: 16px;">
+      <div class="header">
+        <div class="title"> Danh Sách Nhóm Tin Tức</div>
+        <div class="icon">
+          <mat-icon>group_add</mat-icon>
+        </div>
+      </div>
+      <div class="content-group">
+        <mat-table [dataSource]="dataSourceContentGroup">
+          <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef> Tên Nhóm </mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="action">
+            <mat-header-cell *matHeaderCellDef> Thao tác </mat-header-cell>
+            <mat-cell *matCellDef="let row">
+              <button class="btn-30" (click)="onInsGroup(row.id)" mat-icon-button matTooltip="Sửa"
+                matTooltipPosition="right">
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button class="btn-30" (click)="onDeleteContentGroup(row)" mat-icon-button matTooltip="Xóa"
+                matTooltipPosition="right">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </mat-cell>
+          </ng-container>
+          <mat-header-row *matHeaderRowDef="displayedColumnsContentGroup"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumnsContentGroup;"></mat-row>
+        </mat-table>
+      </div>
+      <div class="pull-right">
+        <button mat-icon-button mat-mini-fab color="accent" (click)="onInsGroup()">
+          <mat-icon>add</mat-icon>
+        </button>
+      </div>
+    </mat-card>
+  </div>
+  <div class="w-75">
+    <div class="content mat-card">
+      <div class="fillter">
+        <mat-form-field class="w-50">
+          <mat-label>Tìm kiếm</mat-label>
+          <input matInput (keyup)="applyFilter($event)" autocomplete="off">
+        </mat-form-field>
+      </div>
+      <mat-table [dataSource]="dataSourceContent" matSort>
+        <ng-container matColumnDef="id">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{row.id}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="images">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Hình ảnh </mat-header-cell>
+          <mat-cell *matCellDef="let row">
+            <img src="../../../assets/content/{{row.images}}" [alt]="row.name" height="50px" width="100px">
+          </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="name">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Tên tin tức </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="link">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Link </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{row.link}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="create_time">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Ngày tạo </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{row.create_time|date:"dd/MM/yyyy hh:mm:ss"}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="action">
+          <mat-header-cell *matHeaderCellDef> Thao tác </mat-header-cell>
+          <mat-cell *matCellDef="let row">
+            <button class="btn-30" (click)="onInsContent(row.id)" mat-icon-button matTooltip="Sửa"
+              matTooltipPosition="right">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button class="btn-30" (click)="onDeleteContent(row)" mat-icon-button matTooltip="Xóa"
+              matTooltipPosition="right">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </mat-cell>
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="displayedColumnsContent"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumnsContent;"></mat-row>
+      </mat-table>
+      <mat-paginator [pageSizeOptions]="[10,25,50,100]">
+      </mat-paginator>
+    </div>
+    <div class="fixed-action-btn">
+      <a matTooltip="Thêm" (click)="onInsContent()" matTooltipPosition="above" mat-fab keyboard-create color="warn">
+        <mat-icon>
+          add
+        </mat-icon>
+      </a>
+    </div>
+  </div>
+</div>

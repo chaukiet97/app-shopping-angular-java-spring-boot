@@ -40,8 +40,6 @@ export class PagesComponent implements OnInit {
       if (res.error == 200) {
         this.pageGroup = res.data;
         this.dataSourcePageGroup = new MatTableDataSource(this.pageGroup);
-        this.dataSourcePageGroup.paginator = this.paginator;
-        this.dataSourcePageGroup.sort = this.sort;
       }
     })
 
