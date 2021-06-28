@@ -13,5 +13,5 @@ export class Customer {
   sex: number;
   brithday: Date;
   address: string;
-  password:string
+  password: string
 }

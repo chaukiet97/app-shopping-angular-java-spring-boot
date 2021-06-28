@@ -1,3 +1,5 @@
+import { DialogDeleteCustomerComponent } from './shared/component/customer/dialog-delete-customer/dialog-delete-customer.component';
+import { CustomerService } from './../shared/core/service/customer.service';
 import { ContentService } from './../shared/core/service/content.service';
 import { ContactService } from './../shared/core/service/contact.service';
 import { UserService } from './../shared/core/service/user.service';
@@ -78,6 +80,7 @@ import { DeleteContendComponent } from './shared/component/content/delete-conten
     InsContendComponent,
     DeleteGroupContendComponent,
     DeleteContendComponent,
+    DialogDeleteCustomerComponent
   ],
   imports: [
     CommonModule,
@@ -102,6 +105,8 @@ import { DeleteContendComponent } from './shared/component/content/delete-conten
     InsContendComponent,
     DeleteGroupContendComponent,
     DeleteContendComponent,
+    DialogDeleteCustomerComponent,
+
   ],
   providers:[
     LinkService,
@@ -111,7 +116,7 @@ import { DeleteContendComponent } from './shared/component/content/delete-conten
     UserService,
     ContactService,
     ContentService,
-
+    CustomerService,
   ]
 
 })

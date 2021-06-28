@@ -1,1 +1,66 @@
-<p>customer works!</p>
+<div class="app-customer">
+  <div class="customer mat-card">
+    <div class="mat-card-header header">
+      <div class="title">
+        <h3>Danh sách khách hàng</h3>
+      </div>
+      <div class="fillter">
+        <mat-form-field class="w-100">
+          <mat-label>Tìm kiếm</mat-label>
+          <input matInput (keyup)="applyFilter($event)" autocomplete="off">
+        </mat-form-field>
+      </div>
+    </div>
+    <mat-table [dataSource]="dataSource" matSort>
+      <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.id}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Họ tên </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="email">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Email </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.email}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="phone">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Số điện thoại </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.phone}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="sex">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Giới tính </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.sex==1?'Nam':'Nữ'}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="brithday">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Ngày sinh </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.brithday|date:"dd/MM/yyyy"}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="address">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Địa chỉ </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.address}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="create_time">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Ngày tạo </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.create_time|date:"dd/MM/yyyy hh:mm:ss"}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="action">
+        <mat-header-cell *matHeaderCellDef> Thao tác </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <!-- <button class="btn-30" (click)="onInsContent(row.id)" mat-icon-button matTooltip="Sửa"
+            matTooltipPosition="right">
+            <mat-icon>edit</mat-icon>
+          </button> -->
+          <button class="btn-30" (click)="onDeleteCustomer(row)" mat-icon-button matTooltip="Xóa"
+            matTooltipPosition="right">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+    <mat-paginator [pageSizeOptions]="[10,25,50,100]">
+    </mat-paginator>
+  </div>
+</div>
