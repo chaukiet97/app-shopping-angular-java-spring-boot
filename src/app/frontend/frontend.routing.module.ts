@@ -24,7 +24,7 @@ const routes: Routes = [
       { path: 'lien-he', component: ContactComponent },
       { path: 'tin-tuc', component: ContendComponent },
       { path: 'san-pham', component: ProductComponent },
-      { path: 'tin-tuc/:parent_link', component: ContendGroupComponent },
+      { path: 'tin-tuc/:parent_link', component: ContendComponent },
       { path: 'tin-tuc/:parent_link/:link', component: ContendDetailComponent },
       { path: 'san-pham/:parent_link', component: ProductGroupComponent },
       { path: 'san-pham/:parent_link/:link', component: ProductDetailComponent },

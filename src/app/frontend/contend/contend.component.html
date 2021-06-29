@@ -1,1 +1,19 @@
-<p>contend works!</p>
+<div class="content-group-frontend bg-white">
+  <div class="container-main">
+    <div class="container-fuild">
+      <div class="row">
+        <div class="col-12">
+          <div class="title-content">
+            <h2 class="text-center">{{title?title:"Tin Tức"}}</h2>
+            <div class="line-style">
+              <span></span>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 col-12" style="margin-bottom: 24px;" *ngFor="let item of content">
+          <app-box-content [item]="item"></app-box-content>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>

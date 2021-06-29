@@ -1,1 +1,31 @@
-<p>contend-detail works!</p>
+<div class="bg-white detail-content">
+  <div class="container-main">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <ul>
+            <li>
+              <a [routerLink]="['/']"><small>Trang Chủ</small></a>
+            </li>/
+            <li>
+              <a routerLink="/tin-tuc/{{parent_link}}"><small>{{contentDetail.name_group}}</small></a>
+            </li>/
+            <li><small>{{contentDetail.name}}</small></li>
+          </ul>
+        </div>
+        <div class="col-12">
+          <div class="content" style="background-color: #f8f9fa!important;padding: 16px 24px;">
+            <div class="title">
+              <h1 style="color: #f33;">{{contentDetail.name}}</h1>
+            </div>
+            <p class="bg-white" style="border: 1px dashed #000;padding: 16px 24px;">{{contentDetail.description}}</p>
+            <img src="../../../assets/content/{{contentDetail.images}}" [alt]="contentDetail.name" height="100%"
+              width="100%">
+
+            <div class="w-100" style="margin-top: 24px;" [innerHTML]="contentDetail.detail | sanitizeHtml"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+.detail-content{
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+ul{
+  margin: 0 !important;
+  display: flex;
+  align-items: center;
+  background: #ECF0F5;
+}
+ul li {
+  list-style: none;
+  padding: 8px 8px;
+}
+li a{
+  text-decoration: none;
+  color: #000;
+  font-weight: 600;
+}
+li:hover a{
+  color: #f33;
+}
