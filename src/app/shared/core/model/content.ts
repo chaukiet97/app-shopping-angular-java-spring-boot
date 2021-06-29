@@ -27,3 +27,22 @@ export class Content{
   create_time:Date
 }
 
+export class ContentAPIResonse{
+  error: number;
+  message: string;
+  data: ContentAPI;
+}
+export class ContentAPI{
+  id: number;
+  name: string;
+  link: string;
+  group_id: number;
+  images: string;
+  detail:string;
+  description:string;
+  status:number;
+  create_time:Date;
+  name_group:string;
+  parent_link:string;
+}
+

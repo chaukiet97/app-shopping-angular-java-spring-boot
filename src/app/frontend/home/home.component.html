@@ -80,6 +80,18 @@
           </div>
         </div>
       </div>
+      <div class="row">
+        <div class="col-12" style="padding: 0;">
+          <h2 class="title-heading">
+            <span>Tin Tức</span>
+          </h2>
+          <div class="row">
+            <div class="col-md-3 col-12" style="margin-bottom: 24px;" *ngFor="let item of contentHome">
+            <app-box-content [item]="item"></app-box-content>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

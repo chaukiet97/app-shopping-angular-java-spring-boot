@@ -16,7 +16,7 @@ const routes: Routes = [
   {
     path: 'admin',
     loadChildren: () => import(`./backend/backend.module`).then(m => m.BackendModule),
-    canActivate: [PersonnelGuard]
+    // canActivate: [PersonnelGuard]
   },
 
 ];

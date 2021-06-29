@@ -1,0 +1,14 @@
+<figure class="w-100 bg-white">
+  <div class="img-content">
+    <img src="../../../../assets/content/{{item.images  }}" [alt]="item.name">
+  </div>
+  <div class="info-content">
+    <h4 class="name">{{item.name}}</h4>
+    <p class="description">{{item.description}}</p>
+    <a [routerLink]="['/tin-tuc/'+ item.parent_link+ '/' +item.link]" class="btn-view-more">
+    Xem chi tiết
+    <!-- <mat-icon>keyboard_arrow_right</mat-icon> -->
+  </a>
+  </div>
+
+</figure>

@@ -10,6 +10,7 @@ export class HomeComponent implements OnInit {
   productSales: any = [];
   productNew: any = [];
   productHilight: any = [];
+  contentHome: any = [];
   constructor(
     private apiService: ApiService
   ) { }
@@ -28,6 +29,11 @@ export class HomeComponent implements OnInit {
     this.apiService.getProductByType(3).subscribe(res => {
       if (res.error == 200) {
         this.productHilight = res.data
+      }
+    })
+    this.apiService.getContentHome().subscribe(res=>{
+      if (res.error == 200) {
+        this.contentHome = res.data
       }
     })
   }

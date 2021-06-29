@@ -1,3 +1,4 @@
+import { ContentAPIResonse } from './../model/content';
 import { CustomerResonse } from './../model/customer';
 import { ProductResonse, APIProductResponse } from './../model/products';
 import { BannerResonse, WebsiteResonse } from './../model/settings';
@@ -62,5 +63,14 @@ export class ApiService {
   }
   login(data): Observable<CustomerResonse> {
     return this.http.post<CustomerResonse>(environment.api_host + `/api/login`, data);
+  }
+  getContentHome(): Observable<ContentAPIResonse> {
+    return this.http.get<ContentAPIResonse>(environment.api_host + '/api/getContentHome')
+  }
+  getContentByLinkGroup(link): Observable<ContentAPIResonse> {
+    return this.http.get<ContentAPIResonse>(environment.api_host + `/api/getContentGroup/${link}`)
+  }
+  getContentDetalByLink(link): Observable<ContentAPIResonse> {
+    return this.http.get<ContentAPIResonse>(environment.api_host + `/api/getContentByLink/${link}`);
   }
 }

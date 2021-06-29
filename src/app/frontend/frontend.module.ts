@@ -28,6 +28,7 @@ import { PageComponent } from './page/page.component';
 import { CartComponent } from './cart/cart.component';
 import { BtnComponent } from './shared/btn/btn.component';
 import { SearchComponent } from './search/search.component';
+import { BoxContentComponent } from './shared/box-content/box-content.component';
 
 
 
@@ -52,6 +53,7 @@ import { SearchComponent } from './search/search.component';
     SanitizeHtmlPipe,
     BtnComponent,
     SearchComponent,
+    BoxContentComponent,
 
   ],
   imports: [
